@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Market MN - PRO</title>
+    <title>Game Market MN - FINAL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
@@ -14,10 +14,8 @@
     <style>
         :root {
             --bg-dark: #050505;
-            /* --- NEW COLORS --- */
-            --main-yellow: #ffea00;  /* Cyber Yellow (Main) */
-            --main-cyan: #00f3ff;    /* Electric Cyan (Secondary - Сольсон өнгө) */
-            /* ------------------ */
+            --main-yellow: #ffea00;  /* Cyber Yellow */
+            --main-cyan: #00f3ff;    /* Electric Cyan */
             --main-white: #ffffff;
             --border-thick: 3px solid var(--main-white);
             --shadow-hard: 6px 6px 0px var(--main-yellow);
@@ -33,7 +31,7 @@
             background-image: 
                 linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-size: 30px 30px;
         }
 
         h1, h2, h3 {
@@ -79,11 +77,10 @@
         }
         .profile-box img {
             width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(100%); transition: 0.3s;
+            /* filter: grayscale(100%);  <-- ЭНИЙГ АВЧ ХАЯСАН (ӨНГӨТӨӨРӨӨ ХАРАГДАНА) */
+            transition: 0.3s;
         }
-        .profile-box:hover img { filter: grayscale(0%); }
         
-        /* Shadow Box - Одоо Cyan өнгөтэй болсон */
         .profile-box::after {
             content: ''; position: absolute; top: 10px; left: 10px;
             width: 100%; height: 100%; border: var(--border-thick);
@@ -121,11 +118,9 @@
             background: var(--main-white); color: #000;
         }
         
-        /* Yellow Button */
         .btn-accent { background: var(--main-yellow); border-color: var(--main-yellow); color: #000; }
         .btn-accent:hover { background: #fff; color: #000; border-color: #fff; box-shadow: 6px 6px 0 var(--main-yellow); }
 
-        /* Cyan Button (Group Chat) */
         .btn-cyan { background: var(--main-cyan); border-color: var(--main-cyan); color: #000; }
         .btn-cyan:hover { background: #fff; color: #000; border-color: #fff; box-shadow: 6px 6px 0 var(--main-cyan); }
 
@@ -139,7 +134,7 @@
         .section-title { font-size: 2rem; color: var(--main-white); }
         .section-count { font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--main-cyan); }
 
-        /* --- GROUPS --- */
+        /* --- GROUPS (INDUSTRIAL BLOCKS) --- */
         .proof-wrap {
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
@@ -158,22 +153,20 @@
         .proof-block:hover {
             background: var(--main-white);
             transform: translate(-4px, -4px);
-            box-shadow: 6px 6px 0 var(--main-cyan); /* Hover shadow becomes Cyan */
+            box-shadow: 6px 6px 0 var(--main-cyan);
         }
         .proof-block:hover .block-left, 
         .proof-block:hover .block-role { color: #000; }
         
-        /* Icon Colors on Hover */
         .proof-block:hover .role-admin-icon { color: var(--main-yellow); transform: scale(1.2); }
         .proof-block:hover .role-mod-icon { color: var(--main-cyan); transform: scale(1.2); }
 
         .block-left { display: flex; flex-direction: column; }
-        .block-name { font-weight: 800; font-size: 1rem; margin-bottom: 5px; font-family: 'Syne'; }
+        .block-name { font-weight: 800; font-size: 0.95rem; margin-bottom: 5px; font-family: 'Syne'; line-height: 1.2; }
         .block-role { font-size: 0.8rem; color: #888; font-family: 'JetBrains Mono'; }
         
         .block-icon { font-size: 1.5rem; color: var(--main-white); transition: 0.3s; }
         
-        /* Role Colors */
         .role-admin { color: var(--main-yellow) !important; }
         .role-mod { color: var(--main-cyan) !important; }
 
@@ -222,7 +215,7 @@
 
         .art-info { padding: 20px; }
         .art-title { font-size: 1.4rem; margin-bottom: 5px; }
-        .art-detail { font-size: 0.8rem; color: #888; margin-bottom: 15px; display: block; }
+        .art-detail { font-size: 0.8rem; color: #888; margin-bottom: 15px; display: block; font-family: 'JetBrains Mono';}
 
         .art-buy {
             width: 100%; padding: 12px; 
@@ -301,28 +294,28 @@
         <div class="proof-wrap">
             <a href="https://facebook.com/profile.php?id=61561712856021" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">GAME MARKET MN</span>
+                    <span class="block-name">Game Market MN</span>
                     <span class="block-role role-admin">PAGE ADMIN</span>
                 </div>
                 <i class="fas fa-crown block-icon role-admin-icon"></i>
             </a>
             <a href="https://facebook.com/groups/186310009926522" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">PUBG TRADE</span>
+                    <span class="block-name">PUBG Аккоунт худалдаа 🇲🇳</span>
                     <span class="block-role role-admin">34K ADMIN</span>
                 </div>
                 <i class="fas fa-crown block-icon role-admin-icon"></i>
             </a>
             <a href="https://facebook.com/groups/905083090111442" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">PUBG MIDMAN</span>
+                    <span class="block-name">PUBG MOBILE & Mid 🇲🇳</span>
                     <span class="block-role role-admin">11K ADMIN</span>
                 </div>
                 <i class="fas fa-crown block-icon role-admin-icon"></i>
             </a>
             <a href="https://facebook.com/groups/199627921906512" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">STANDOFF 2</span>
+                    <span class="block-name">Standoff 2 Mongolia 🇲🇳</span>
                     <span class="block-role role-admin">30K ADMIN</span>
                 </div>
                 <i class="fas fa-crown block-icon role-admin-icon"></i>
@@ -330,21 +323,21 @@
 
             <a href="https://facebook.com/groups/2998606320453023" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">MOBILE LEGENDS</span>
+                    <span class="block-name">Mobile legends: mongolia✅</span>
                     <span class="block-role role-mod">140K MOD</span>
                 </div>
                 <i class="fas fa-shield-alt block-icon role-mod-icon"></i>
             </a>
             <a href="https://facebook.com/groups/1253738194719122" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">PUBG MOBILE</span>
+                    <span class="block-name">PUBG Mobile: Mongolia 🇲🇳</span>
                     <span class="block-role role-mod">85K MOD</span>
                 </div>
                 <i class="fas fa-shield-alt block-icon role-mod-icon"></i>
             </a>
             <a href="https://facebook.com/groups/806727429744887" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">STANDOFF TRADE</span>
+                    <span class="block-name">Standoff 2: Mongolia🇲🇳</span>
                     <span class="block-role role-mod">48K MOD</span>
                 </div>
                 <i class="fas fa-shield-alt block-icon role-mod-icon"></i>
@@ -358,28 +351,28 @@
             </a>
             <a href="https://facebook.com/groups/1851470735099237" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">PUBGM TRADE</span>
+                    <span class="block-name">PUBG MOBILE 🇲🇳 ХУДАЛДАА</span>
                     <span class="block-role role-mod">31K MOD</span>
                 </div>
                 <i class="fas fa-shield-alt block-icon role-mod-icon"></i>
             </a>
             <a href="https://facebook.com/groups/146728474305150" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">PUBG MOBILE MN</span>
+                    <span class="block-name">Pubg Mobile Mongolia 🇲🇳</span>
                     <span class="block-role role-mod">30K MOD</span>
                 </div>
                 <i class="fas fa-shield-alt block-icon role-mod-icon"></i>
             </a>
             <a href="https://facebook.com/groups/980953797128182" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">MLBB TRADE</span>
+                    <span class="block-name">MLBB-Mongolia acc awn zarn</span>
                     <span class="block-role role-mod">16K MOD</span>
                 </div>
                 <i class="fas fa-shield-alt block-icon role-mod-icon"></i>
             </a>
             <a href="https://facebook.com/groups/793255685887110" target="_blank" class="proof-block">
                 <div class="block-left">
-                    <span class="block-name">ACC RENT</span>
+                    <span class="block-name">Acc turees | PUBG ,ML |</span>
                     <span class="block-role role-mod">4K MOD</span>
                 </div>
                 <i class="fas fa-shield-alt block-icon role-mod-icon"></i>
@@ -394,20 +387,20 @@
         </div>
         <div class="receipt">
             <div class="receipt-row">
-                <span>MIDMAN SERVICE (0-1M)</span>
+                <span>Midman Service (0-1M)</span>
                 <span class="price-highlight">5,000₮</span>
             </div>
             <div class="receipt-row">
-                <span>MIDMAN SERVICE (1M+)</span>
+                <span>Midman Service (1M+)</span>
                 <span class="price-highlight">1%</span>
             </div>
             <div class="receipt-row">
-                <span>BROKER FEE</span>
+                <span>Sell Account Fee</span>
                 <span class="price-highlight">5%</span>
             </div>
             <div class="receipt-row">
-                <span>EVALUATION / BIND</span>
-                <span class="price-highlight" style="background:var(--main-cyan); color:black;">FREE</span>
+                <span>Evaluation / Bind Check</span>
+                <span class="price-highlight" style="background:var(--main-yellow); color:black;">FREE</span>
             </div>
             <div class="receipt-row">
                 <span>TOTAL TRUST</span>
@@ -425,33 +418,33 @@
             
             <div class="art-card">
                 <div class="art-img-box">
-                    <img src="https://i.ibb.co/bR2r2nr8/IMG-1143.png" alt="PUBG" class="art-img">
+                    <img src="https://i.ibb.co/bR2r2nr8/IMG-1143.png" class="art-img" alt="PUBG">
                 </div>
                 <div class="art-info">
                     <h3 class="art-title">PUBG KR</h3>
-                    <span class="art-detail">LVL 76 / RARE SKINS / GOOGLE</span>
+                    <span class="art-detail">Lvl 76 / Rare Skins / Google Bind</span>
                     <button onclick="window.open('https://m.me/61561712856021')" class="art-buy">2,500,000₮</button>
                 </div>
             </div>
 
             <div class="art-card">
                 <div class="art-img-box">
-                    <img src="https://i.ibb.co/JW0Kbwpw/595865809-2060174601385459-6335660528261022994-n.jpg" alt="PUBG" class="art-img">
+                    <img src="https://i.ibb.co/JW0Kbwpw/595865809-2060174601385459-6335660528261022994-n.jpg" class="art-img" alt="PUBG">
                 </div>
                 <div class="art-info">
                     <h3 class="art-title">PUBG GL</h3>
-                    <span class="art-detail">LVL 65 / BAPE SKINS / ELINK</span>
+                    <span class="art-detail">Lvl 65 / Bape Skins / Elink Bind</span>
                     <button onclick="window.open('https://m.me/61561712856021')" class="art-buy">2,000,000₮</button>
                 </div>
             </div>
 
             <div class="art-card">
                 <div class="art-img-box">
-                    <img src="https://i.ibb.co/XrtgzRD5/595685785-2058484391554480-387863129341016037-n.jpg" alt="MLBB" class="art-img">
+                    <img src="https://i.ibb.co/XrtgzRD5/595685785-2058484391554480-387863129341016037-n.jpg" class="art-img" alt="MLBB">
                 </div>
                 <div class="art-info">
                     <h3 class="art-title">MLBB GL</h3>
-                    <span class="art-detail">LVL 61 / 84 SKINS / MYTHIC</span>
+                    <span class="art-detail">Lvl 61 / 84 Skins / Elink / Number</span>
                     <button onclick="window.open('https://m.me/61561712856021')" class="art-buy">800,000₮</button>
                 </div>
             </div>
