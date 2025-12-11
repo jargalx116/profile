@@ -5,268 +5,223 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Market MN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Public+Sans:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     
+    <meta property="og:image" content="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png">
+    <link rel="icon" href="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png" type="image/x-icon">
+
     <style>
         :root {
-            --bg-color: #f0f0f0;
-            --main-color: #8b5cf6; /* Тод ягаан */
-            --accent-color: #facc15; /* Тод шар */
-            --text-color: #000000;
-            --border: 3px solid #000000; /* Зузаан хар хүрээ */
-            --shadow: 5px 5px 0px #000000; /* Хатуу сүүдэр */
-            --shadow-hover: 2px 2px 0px #000000; /* Дарсан үеийн сүүдэр */
+            --bg-color: #050505;
+            --pac-yellow: #facc15; /* Тод шар */
+            --wall-blue: #3b82f6;   /* Хананы цэнхэр */
+            --ghost-red: #ef4444;   /* Улаан */
+            --text-white: #e5e7eb;  /* Цагаан саарал */
+            --pixel-border: 4px solid var(--wall-blue);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Public Sans', sans-serif;
+            font-family: 'VT323', monospace;
             background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.5;
-            /* Dotted Background Pattern */
-            background-image: radial-gradient(#000 1px, transparent 1px);
-            background-size: 20px 20px;
+            color: var(--text-white);
+            line-height: 1.4;
+            /* Pacman Grid Pattern */
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
             overflow-x: hidden;
+            font-size: 1.3rem;
         }
 
-        a { text-decoration: none; color: inherit; }
+        /* Headings Font */
+        h1, h2, h3, .logo, .btn, .price-tag, th, .section-title {
+            font-family: 'Press Start 2P', cursive;
+            text-transform: uppercase;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
         ul { list-style: none; }
 
         .container { max-width: 1100px; margin: 0 auto; width: 100%; padding: 0 20px; }
 
         /* HEADER */
         header {
-            background: #fff;
-            border-bottom: var(--border);
+            background: #000;
+            border-bottom: var(--pixel-border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
+            padding: 20px 0;
+            box-shadow: 0 5px 0px rgba(0,0,0,0.5);
         }
         .header-inner { display: flex; justify-content: space-between; align-items: center; }
         
-        .logo { 
-            font-family: 'Archivo Black', sans-serif; 
-            font-size: 1.5rem; 
-            text-transform: uppercase; 
-            color: #000;
-            background: var(--accent-color);
-            padding: 5px 10px;
-            border: 2px solid #000;
-            box-shadow: 3px 3px 0px #000;
-            transform: rotate(-2deg); /* Логог бага зэрэг хазайлгав */
-        }
+        .logo { font-size: 1rem; color: var(--pac-yellow); text-shadow: 3px 3px 0px #000; }
+        .logo span { color: var(--text-white); }
 
-        .nav-links a { 
-            margin-left: 20px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            font-size: 0.9rem; 
-            background: #fff;
-            padding: 8px 15px;
-            border: 2px solid #000;
-            transition: 0.2s;
-        }
-        .nav-links a:hover { 
-            background: var(--main-color); 
-            color: #fff; 
-            box-shadow: 4px 4px 0px #000;
-            transform: translate(-2px, -2px);
-        }
+        .nav-links a { margin-left: 20px; font-size: 0.7rem; color: var(--text-white); }
+        .nav-links a:hover { color: var(--pac-yellow); text-shadow: 0 0 5px var(--pac-yellow); }
 
         /* HERO SECTION */
         section { padding: 60px 0; }
         .hero { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 50px; 
-            background: #fff;
-            border: var(--border);
-            padding: 40px;
-            box-shadow: var(--shadow);
-            margin-top: 20px;
+            display: flex; align-items: center; justify-content: center; gap: 50px; 
+            padding-top: 30px;
         }
 
-        /* Hero Card (Profile) */
+        /* Profile Card (Box Style) */
         .hero-card {
-            flex: 0 0 320px;
-            background: var(--accent-color);
-            border: var(--border);
-            padding: 20px;
+            flex: 0 0 340px;
             text-align: center;
-            box-shadow: 8px 8px 0px #000; /* Илүү том сүүдэр */
+            background: #000;
+            border: var(--pixel-border);
+            padding: 30px;
+            box-shadow: 8px 8px 0px rgba(59, 130, 246, 0.3);
+            position: relative;
         }
+        
+        /* --- ЗУРГИЙН ХЭСЭГ (БӨӨРӨНХИЙ + ГЭРЭЛТЭХ) --- */
         .hero-img {
-            width: 140px; height: 140px; 
+            width: 160px; 
+            height: 160px; 
+            border-radius: 50%; /* БӨӨРӨНХИЙ */
             object-fit: cover;
-            border: var(--border);
-            border-radius: 50%;
-            background: #fff;
-            margin-bottom: 15px;
+            border: 4px solid var(--wall-blue); /* Цэнхэр хүрээ */
+            padding: 4px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px var(--wall-blue); /* Цэнхэр гэрэл (Glow) */
+            background-color: #000;
+            image-rendering: pixelated; 
+            transition: 0.3s;
         }
-        .hero-card h2 { 
-            font-family: 'Archivo Black', sans-serif; 
-            font-size: 1.5rem; margin-bottom: 5px; 
-            text-transform: uppercase;
+        
+        /* Хулгана очиход шар болно */
+        .hero-img:hover {
+            border-color: var(--pac-yellow);
+            box-shadow: 0 0 35px var(--pac-yellow);
+            transform: scale(1.05);
         }
+
+        .hero-card h2 { font-size: 1rem; color: var(--pac-yellow); margin-bottom: 10px; }
         .badge { 
-            background: #000; color: #fff; 
-            padding: 5px 10px; font-weight: 700; font-size: 0.8rem; 
-            display: inline-block; margin-bottom: 15px;
-            transform: rotate(2deg);
+            background: var(--ghost-red); color: #fff; 
+            padding: 8px; font-size: 0.6rem; margin-bottom: 20px; display: inline-block;
+            border: 2px solid #fff; box-shadow: 3px 3px 0 #000;
         }
 
         /* Hero Text */
-        .hero-text { flex: 1; }
+        .hero-text { flex: 1; max-width: 600px; }
         .hero-text h1 { 
-            font-family: 'Archivo Black', sans-serif; 
-            font-size: 3.5rem; line-height: 1; 
-            margin-bottom: 20px; 
-            text-transform: uppercase;
-            -webkit-text-stroke: 2px black;
-            color: #fff;
-            text-shadow: 4px 4px 0px var(--main-color);
+            font-size: 2.2rem; margin-bottom: 20px; color: var(--text-white); 
+            text-shadow: 4px 4px 0px var(--wall-blue);
         }
-        .hero-text p { 
-            font-size: 1.1rem; font-weight: 600; margin-bottom: 30px; 
-            background: #fff; display: inline-block; border: 2px solid #000; padding: 10px;
-        }
+        .hero-text span { color: var(--pac-yellow); }
+        .hero-text p { color: #9ca3af; margin-bottom: 30px; font-size: 1.4rem; border-left: 4px solid var(--pac-yellow); padding-left: 20px; }
 
-        /* Buttons Style */
-        .hero-btns { display: flex; flex-direction: column; gap: 10px; }
+        /* 8-BIT BUTTONS */
+        .hero-btns { display: flex; flex-direction: column; gap: 15px; }
         
-        .btn-profile { 
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 12px; font-weight: 800; text-transform: uppercase;
-            border: 2px solid #000; background: #fff; 
-            transition: 0.2s; cursor: pointer;
+        .btn {
+            padding: 15px; font-size: 0.7rem; text-align: center; cursor: pointer;
+            border: 4px solid #fff; background: #000; color: #fff;
+            position: relative; box-shadow: 5px 5px 0px rgba(255,255,255,0.3);
         }
-        .btn-profile:hover { 
-            box-shadow: 4px 4px 0px #000; 
-            transform: translate(-2px, -2px); 
-        }
-        .btn-page:hover { background: #1877F2; color: #fff; }
-        .btn-admin:hover { background: #fff; color: #000; }
-        .btn-group { background: var(--main-color); color: #fff; }
-        .btn-group:hover { background: #7c3aed; }
+        .btn:active { transform: translate(4px, 4px); box-shadow: none; }
+        .btn:hover { background: var(--wall-blue); color: #fff; border-color: var(--wall-blue); }
 
-        .btn-main { 
-            padding: 15px 40px; background: #000; color: #fff; 
-            font-weight: 800; font-size: 1.1rem; text-transform: uppercase;
-            border: none; cursor: pointer; display: inline-block;
-            transition: 0.2s;
-        }
-        .btn-main:hover { 
-            background: var(--main-color); 
-            box-shadow: 5px 5px 0px #000; 
-            transform: translate(-3px, -3px); 
-            color: #fff;
-        }
+        .btn-page { border-color: var(--wall-blue); color: var(--wall-blue); }
+        .btn-page:hover { background: var(--wall-blue); color: #fff; }
 
-        /* SECTION TITLES */
+        .btn-admin { border-color: var(--ghost-red); color: var(--ghost-red); }
+        .btn-admin:hover { background: var(--ghost-red); color: #fff; }
+
+        .btn-group { border-color: var(--pac-yellow); color: var(--pac-yellow); }
+        .btn-group:hover { background: var(--pac-yellow); color: #000; }
+
+        .btn-main { background: var(--pac-yellow); color: #000; border-color: #000; box-shadow: 6px 6px 0px var(--wall-blue); }
+        .btn-main:hover { background: #fff; transform: scale(1.02); }
+
+        /* SECTIONS */
         .section-title { 
-            font-family: 'Archivo Black', sans-serif; 
-            font-size: 2.5rem; text-align: center; margin-bottom: 40px; 
-            text-transform: uppercase;
-            text-shadow: 3px 3px 0px #fff, 6px 6px 0px #000;
+            font-size: 1.5rem; text-align: center; margin-bottom: 50px; 
+            color: var(--text-white); text-shadow: 3px 3px 0px var(--wall-blue);
         }
+        .section-title::before { content: '> '; color: var(--pac-yellow); animation: blink 1s infinite; }
+        .section-title::after { content: ' <'; color: var(--pac-yellow); animation: blink 1s infinite; }
+
+        @keyframes blink { 50% { opacity: 0; } }
 
         /* PROOF GRID */
-        .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+        .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
         .proof-link { 
             display: flex; align-items: center; 
-            background: #fff; padding: 15px; 
-            border: var(--border); 
+            background: #000; padding: 15px; 
+            border: 2px solid #333;
             transition: 0.2s; 
         }
-        .proof-link:hover { 
-            background: var(--accent-color); 
-            box-shadow: 5px 5px 0px #000; 
-            transform: translate(-3px, -3px); 
-        }
+        .proof-link:hover { border-color: var(--pac-yellow); transform: translate(-3px, -3px); box-shadow: 5px 5px 0 var(--pac-yellow); }
         .proof-link i { font-size: 1.2rem; margin-right: 15px; width: 30px; text-align: center; }
-        .proof-text { font-weight: 800; font-size: 0.9rem; }
+        .proof-text { font-size: 0.8rem; font-family: 'Press Start 2P'; line-height: 1.4; color: #ccc; }
         
-        .proof-link.admin { border-left: 8px solid #000; } 
-        .proof-link.mod { border-left: 8px solid var(--main-color); }
+        .proof-link.admin i { color: var(--pac-yellow); }
+        .proof-link.mod i { color: var(--wall-blue); }
 
         /* MARKET GRID */
-        .market-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-            gap: 30px; 
-            justify-content: center;
-        }
-
+        .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; justify-content: center; }
+        
         .account-card { 
-            background: #fff; 
-            border: var(--border); 
-            transition: 0.2s; 
-            width: 100%;
-            height: fit-content; 
-            display: flex; flex-direction: column;
+            background: #000; border: 4px solid #fff;
+            transition: 0.2s; display: flex; flex-direction: column;
+            box-shadow: 8px 8px 0px #333;
         }
-        .account-card:hover { 
-            box-shadow: 8px 8px 0px #000; 
-            transform: translate(-4px, -4px); 
-        }
+        .account-card:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px var(--wall-blue); border-color: var(--wall-blue); }
         
-        .acc-img-container { width: 100%; border-bottom: var(--border); background: #eee; }
-        .acc-img-container img { width: 100%; height: auto; display: block; object-fit: contain; }
+        .acc-img-container { width: 100%; border-bottom: 4px solid #fff; background: #222; }
+        .account-card:hover .acc-img-container { border-color: var(--wall-blue); }
+        .acc-img-container img { width: 100%; display: block; }
 
-        .acc-info { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
-        .acc-title { font-family: 'Archivo Black', sans-serif; font-size: 1.2rem; text-transform: uppercase; }
-        .acc-details { color: #555; font-size: 0.9rem; font-weight: 600; }
+        .acc-info { padding: 20px; }
+        .acc-title { font-size: 0.9rem; color: var(--pac-yellow); margin-bottom: 10px; }
+        .acc-details { color: #aaa; font-size: 1.2rem; font-family: 'VT323'; margin-bottom: 10px; }
         
-        .price-tag { 
-            font-family: 'Archivo Black', sans-serif; 
-            font-size: 1.5rem; color: var(--main-color); 
-            background: #f3f4f6; padding: 5px; border: 2px solid #000;
-            display: block; margin: 10px 0; text-align: center;
-        }
+        .price-tag { font-size: 1.1rem; color: var(--text-white); display: block; margin-bottom: 15px; border: 2px dashed #333; padding: 5px; text-align: center; }
         
         .btn-buy { 
-            width: 100%; padding: 12px; 
-            background: #000; color: #fff; 
-            font-weight: 800; text-transform: uppercase; border: none;
-            cursor: pointer; text-align: center; transition: 0.2s;
+            width: 100%; padding: 10px; 
+            background: var(--wall-blue); color: #fff; 
+            border: 2px solid #fff; font-size: 0.7rem; 
+            cursor: pointer; text-align: center; display: block;
         }
-        .btn-buy:hover { background: var(--accent-color); color: #000; }
+        .btn-buy:hover { background: var(--pac-yellow); color: #000; border-color: #000; }
 
         /* TARIFF TABLE */
         .table-container { 
-            background: #fff; border: var(--border); 
-            max-width: 800px; margin: 0 auto; 
-            box-shadow: var(--shadow);
+            border: var(--pixel-border); 
+            background: #000; max-width: 800px; margin: 0 auto;
+            box-shadow: 8px 8px 0px rgba(59, 130, 246, 0.3);
         }
         table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 15px; text-align: left; border-bottom: 2px solid #000; font-weight: 700; }
-        th { background: #000; color: #fff; text-transform: uppercase; }
+        th, td { padding: 15px; text-align: left; border-bottom: 2px solid var(--wall-blue); font-family: 'VT323'; font-size: 1.4rem;}
+        th { font-family: 'Press Start 2P'; font-size: 0.7rem; color: var(--pac-yellow); background: rgba(59, 130, 246, 0.2); }
         tr:last-child td { border-bottom: none; }
-        .free-text { color: #fff; background: var(--main-color); padding: 3px 8px; border: 2px solid #000; display: inline-block;}
+        .free-text { color: var(--pac-yellow); text-decoration: underline; }
 
         /* FOOTER */
-        footer { background: #000; color: #fff; padding: 40px 0; text-align: center; margin-top: 40px; border-top: 5px solid var(--accent-color); }
-        .footer-social a { 
-            display: inline-flex; width: 40px; height: 40px; 
-            background: #fff; color: #000; 
-            border: 2px solid #fff;
-            align-items: center; justify-content: center;
-            margin: 0 10px; transition: 0.2s; font-size: 1.2rem;
-        }
-        .footer-social a:hover { background: var(--accent-color); border-color: var(--accent-color); transform: scale(1.1); }
+        footer { border-top: var(--pixel-border); padding: 40px 0; text-align: center; margin-top: 40px; background: #000; }
+        .footer-social a { font-size: 1.5rem; margin: 0 15px; color: var(--text-white); }
+        .footer-social a:hover { color: var(--pac-yellow); }
 
         /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; gap: 30px; padding: 20px; }
+            .hero { flex-direction: column; text-align: center; gap: 30px; }
             .hero-card { width: 100%; }
-            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text h1 { font-size: 1.6rem; }
             .nav-links { display: none; }
             .market-grid { grid-template-columns: 1fr; }
-            .proof-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -275,12 +230,12 @@
     <header>
         <div class="container">
             <div class="header-inner">
-                <div class="logo">GAME MARKET</div>
+                <div class="logo">GAME <span>MARKET</span></div>
                 <nav class="nav-links">
-                    <a href="#proof">Баталгаа</a>
-                    <a href="#services">Үйлчилгээ</a>
-                    <a href="#market">Аккоунт</a>
-                    <a href="#contact">Холбогдох</a>
+                    <a href="#proof">БАТАЛГАА</a>
+                    <a href="#services">ҮНЭ ТАРИФ</a>
+                    <a href="#market">АККАУНТ</a>
+                    <a href="#contact">ХОЛБОГДОХ</a>
                 </nav>
             </div>
         </div>
@@ -289,71 +244,47 @@
     <section class="container">
         <div class="hero">
             <div class="hero-card">
-                <img src="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png" alt="Admin Profile" class="hero-img">
+                <img src="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png" alt="Admin" class="hero-img">
                 <h2>Game Market MN</h2>
                 <div class="badge">VERIFIED ADMIN</div>
                 
                 <div class="hero-btns">
-                    <a href="https://www.facebook.com/gamemarket.mn" target="_blank" class="btn-profile btn-page">
-                        <i class="fab fa-facebook-square"></i> PAGE LINK
+                    <a href="https://www.facebook.com/gamemarket.mn" target="_blank" class="btn btn-page">
+                        PAGE LINK
                     </a>
-                    <a href="https://www.facebook.com/jargalsaikhan.official" target="_blank" class="btn-profile btn-admin">
-                        <i class="fas fa-user-shield"></i> ADMIN FB
+                    <a href="https://www.facebook.com/jargalsaikhan.official" target="_blank" class="btn btn-admin">
+                        ADMIN FB
                     </a>
-                    <a href="https://m.me/cm/AbadrhKBoffAja4U/?send_source=cm:copy_invite_link" target="_blank" class="btn-profile btn-group">
-                        <i class="fas fa-users"></i> GROUP CHAT
+                    <a href="https://m.me/cm/AbadrhKBoffAja4U/?send_source=cm:copy_invite_link" target="_blank" class="btn btn-group">
+                        GROUP CHAT
                     </a>
                 </div>
             </div>
 
             <div class="hero-text">
-                <h1>Найдвартай <br> Midman Үйлчилгээ</h1>
-                <p>Монголын томоохон группүүдийн Админ, Модератор.<br> Таны цаг зав, мөнгийг эрсдэлээс хамгаална.</p>
-                <br>
-                <a href="#market" class="btn-main">Бэлэн Аккоунтууд</a>
+                <h1>Найдвартай <br> <span>Midman Үйлчилгээ</span></h1>
+                <p>Монголын томоохон группүүдийн Админ, Модератор. Таны цахим хөрөнгийг эрсдэлээс бүрэн хамгаална.</p>
+                <a href="#market" class="btn btn-main">БЭЛЭН АККАУНТУУД</a>
             </div>
         </div>
     </section>
 
     <section id="proof" class="container">
-        <h2 class="section-title">Миний Удирддаг Группүүд</h2>
+        <h2 class="section-title">Миний Группүүд</h2>
         <div class="proof-grid">
-            <a href="https://facebook.com/profile.php?id=61561712856021" target="_blank" class="proof-link admin">
-                <i class="fas fa-crown"></i><span class="proof-text">Game Market MN — PAGE ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/186310009926522" target="_blank" class="proof-link admin">
-                <i class="fas fa-shield-alt"></i><span class="proof-text">PUBG Аккоунт худалдаа 🇲🇳 — 34K ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/905083090111442" target="_blank" class="proof-link admin">
-                <i class="fas fa-shield-alt"></i><span class="proof-text">PUBG MOBILE & Mid 🇲🇳 — 11K ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/199627921906512" target="_blank" class="proof-link admin">
-                <i class="fas fa-shield-alt"></i><span class="proof-text">Standoff 2 Mongolia 🇲🇳 — 30K ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/2998606320453023" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Mobile legends: mongolia✅ — 140K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/1253738194719122" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">PUBG Mobile: Mongolia 🇲🇳 — 85K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/806727429744887" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Standoff 2: Mongolia🇲🇳 — 48K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/5321202191332717" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">STALWART ESPORTS — 44K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/1851470735099237" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">PUBG MOBILE 🇲🇳 ХУДАЛДАА — 31K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/146728474305150" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Pubg Mobile Mongolia 🇲🇳 — 30K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/980953797128182" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">MLBB-Mongolia acc awn zarn — 16K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/793255685887110" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Acc turees | PUBG ,ML | — 4K MOD</span>
-            </a>
+            <a href="https://facebook.com/profile.php?id=61561712856021" target="_blank" class="proof-link admin"><i class="fas fa-crown"></i><span class="proof-text">Game Market MN — PAGE ADMIN</span></a>
+            <a href="https://facebook.com/groups/186310009926522" target="_blank" class="proof-link admin"><i class="fas fa-shield-alt"></i><span class="proof-text">PUBG Аккоунт худалдаа 🇲🇳 — 34K ADMIN</span></a>
+            <a href="https://facebook.com/groups/905083090111442" target="_blank" class="proof-link admin"><i class="fas fa-shield-alt"></i><span class="proof-text">PUBG MOBILE & Mid 🇲🇳 — 11K ADMIN</span></a>
+            <a href="https://facebook.com/groups/199627921906512" target="_blank" class="proof-link admin"><i class="fas fa-shield-alt"></i><span class="proof-text">Standoff 2 Mongolia 🇲🇳 — 30K ADMIN</span></a>
+            
+            <a href="https://facebook.com/groups/2998606320453023" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">Mobile legends: mongolia✅ — 140K MOD</span></a>
+            <a href="https://facebook.com/groups/1253738194719122" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">PUBG Mobile: Mongolia 🇲🇳 — 85K MOD</span></a>
+            <a href="https://facebook.com/groups/806727429744887" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">Standoff 2: Mongolia🇲🇳 — 48K MOD</span></a>
+            <a href="https://facebook.com/groups/5321202191332717" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">STALWART ESPORTS — 44K MOD</span></a>
+            <a href="https://facebook.com/groups/1851470735099237" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">PUBG MOBILE 🇲🇳 ХУДАЛДАА — 31K MOD</span></a>
+            <a href="https://facebook.com/groups/146728474305150" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">Pubg Mobile Mongolia 🇲🇳 — 30K MOD</span></a>
+            <a href="https://facebook.com/groups/980953797128182" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">MLBB-Mongolia acc awn zarn — 16K MOD</span></a>
+            <a href="https://facebook.com/groups/793255685887110" target="_blank" class="proof-link mod"><i class="fas fa-user-check"></i><span class="proof-text">Acc turees | PUBG ,ML | — 4K MOD</span></a>
         </div>
     </section>
 
@@ -361,11 +292,11 @@
         <h2 class="section-title">Үнэ Тариф</h2>
         <div class="table-container">
             <table>
-                <tr><th>Үйлчилгээ</th><th>Үнэ / Тариф</th></tr>
+                <tr><th>ҮЙЛЧИЛГЭЭ</th><th>ХӨЛС</th></tr>
                 <tr><td>Midman: 0 - 1,000,000₮</td><td>5,000₮</td></tr>
-                <tr><td>Midman: 1,000,000₮ - Дээш</td><td>1%</td></tr>
-                <tr><td>Аккаунт зарж өгөх</td><td>Аккаунтын 5%</td></tr>
-                <tr><td>Аккаунт үнэлгээ, Bind асуулт</td><td><span class="free-text">ҮНЭГҮЙ</span></td></tr>
+                <tr><td>Midman: 1,000,000₮ - Дээш</td><td>Аккоунт 1%</td></tr>
+                <tr><td>Аккаунт зарж өгөх</td><td>5% Шимтгэл</td></tr>
+                <tr><td>Аккаунт үнэлгээ / Bind шалгах</td><td class="free-text">ҮНЭГҮЙ!!</td></tr>
             </table>
         </div>
     </section>
@@ -376,46 +307,37 @@
             
             <div class="account-card">
                 <div class="acc-img-container">
-                    <img src="https://i.ibb.co/bR2r2nr8/IMG-1143.png" alt="PUBG Account">
+                    <img src="https://i.ibb.co/bR2r2nr8/IMG-1143.png" alt="PUBG">
                 </div>
                 <div class="acc-info">
-                    <div class="acc-title">PUBG - KOREA VERSION</div>
-                    <p class="acc-details">Collection Lv76, 75 Level, Rare Skins</p>
-                    <p class="acc-details">Bind: X, Google</p>
+                    <div class="acc-title">PUBG - KOREA</div>
+                    <p class="acc-details">Lvl 76, Rare Skins. Bind: Google</p>
                     <span class="price-tag">2,500,000₮</span>
-                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">
-                        Авах (Chat)
-                    </a>
+                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">АВАХ</a>
                 </div>
             </div>
 
             <div class="account-card">
                 <div class="acc-img-container">
-                    <img src="https://i.ibb.co/JW0Kbwpw/595865809-2060174601385459-6335660528261022994-n.jpg" alt="PUBG Account">
+                    <img src="https://i.ibb.co/JW0Kbwpw/595865809-2060174601385459-6335660528261022994-n.jpg" alt="PUBG">
                 </div>
                 <div class="acc-info">
-                    <div class="acc-title">PUBG - GLOBAL VERSION</div>
-                    <p class="acc-details">Collection Lv65, 85 Level, Bape Skins</p>
-                    <p class="acc-details">Bind: Elink</p>
+                    <div class="acc-title">PUBG - GLOBAL</div>
+                    <p class="acc-details">Lvl 65, Bape Skins. Bind: Elink</p>
                     <span class="price-tag">2,000,000₮</span>
-                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">
-                        Авах (Chat)
-                    </a>
+                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">АВАХ</a>
                 </div>
             </div>
 
             <div class="account-card">
                 <div class="acc-img-container">
-                    <img src="https://i.ibb.co/XrtgzRD5/595685785-2058484391554480-387863129341016037-n.jpg" alt="MLBB Account">
+                    <img src="https://i.ibb.co/XrtgzRD5/595685785-2058484391554480-387863129341016037-n.jpg" alt="MLBB">
                 </div>
                 <div class="acc-info">
-                    <div class="acc-title">PUBG - GLOBAL VERSION</div>
-                    <p class="acc-details">Collection Lv61, 84 Level, Bape Skins</p>
-                    <p class="acc-details">Bind: Elink, Number</p>
+                    <div class="acc-title">MLBB - GLOBAL</div>
+                    <p class="acc-details">Lvl 61, 84 Skins. Bind: Elink</p>
                     <span class="price-tag">800,000₮</span>
-                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">
-                        Авах (Chat)
-                    </a>
+                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">АВАХ</a>
                 </div>
             </div>
 
@@ -424,13 +346,13 @@
 
     <footer>
         <div class="container">
-            <div class="logo" style="margin-bottom: 20px; display:inline-block; transform: rotate(0deg);">GAME MARKET</div>
-            <br>
+            <div class="logo">GAME <span>MARKET</span></div>
+            <br><br>
             <div class="footer-social">
-                <a href="https://www.facebook.com/gamemarket.mn" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.facebook.com/gamemarket.mn" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://m.me/61561712856021" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
             </div>
-            <p style="margin-top:20px; font-size: 0.8rem; font-weight:700;">&copy; 2025 ALL RIGHTS RESERVED.</p>
+            <p style="color: #666; margin-top:20px; font-family: 'VT323'; font-size: 1rem;">&copy; 2025 ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 
