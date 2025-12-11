@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Market MN - CS2 Style</title>
+    <title>Game Market MN</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;700&display=swap" rel="stylesheet">
     
     <meta property="og:image" content="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png">
     <link rel="icon" href="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png" type="image/x-icon">
 
     <style>
         :root {
-            --cs-gold: #eeb62b;       /* Legendary Gold */
-            --cs-blue: #60a5fa;       /* CT Blue */
-            --cs-red: #f87171;        /* T Red */
-            --bg-dark: #121212;       /* Main BG */
-            --card-bg: rgba(30, 30, 35, 0.7); /* Semi-transparent */
+            --cs-gold: #eeb62b;
+            --cs-blue: #5d79ae;
+            --cs-red: #de4c41;
+            --bg-dark: #0b0f12;
             --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            --border-glass: 1px solid rgba(255, 255, 255, 0.1);
+            --text-muted: #b0b0b0;
+            --border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,11 +28,9 @@
             font-family: 'Chakra Petch', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
-            line-height: 1.6;
-            /* CS2 Smoke Background */
+            line-height: 1.5;
             background-image: 
-                radial-gradient(circle at 0% 0%, rgba(93, 121, 174, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(238, 182, 43, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(11, 15, 18, 0.95), rgba(11, 15, 18, 0.9)),
                 url('https://wallpapers.com/images/hd/cs-go-dust-2-map-x4m2d3y5n6z7w8v9.jpg');
             background-size: cover;
             background-attachment: fixed;
@@ -41,223 +38,192 @@
             overflow-x: hidden;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
         ul { list-style: none; }
 
-        .container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 25px; }
+        .container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 20px; }
 
-        /* --- HEADER (Floating HUD) --- */
+        /* HEADER */
         header {
-            background: rgba(15, 15, 20, 0.85);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(20, 20, 25, 0.95);
+            border-bottom: 2px solid var(--cs-gold);
             position: sticky;
             top: 0;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
         }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+        .header-inner { 
+            display: flex; justify-content: space-between; align-items: center; 
+            flex-wrap: wrap; /* Утсан дээр доош унах боломжтой */
+        }
         
         .logo { 
-            font-size: 1.8rem; font-weight: 800; text-transform: uppercase; 
-            color: #fff; letter-spacing: 2px; text-shadow: 0 0 20px rgba(255,255,255,0.2);
-            display: flex; align-items: center; gap: 10px;
+            font-size: 1.4rem; font-weight: 700; text-transform: uppercase; 
+            color: var(--cs-gold); letter-spacing: 1px;
+            display: flex; align-items: center; gap: 8px;
         }
-        .logo span { color: var(--cs-gold); }
 
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 20px; }
         .nav-links a { 
-            font-weight: 700; text-transform: uppercase; font-size: 0.9rem; color: #aaa;
-            letter-spacing: 1px; padding-bottom: 5px;
+            font-weight: 600; text-transform: uppercase; font-size: 0.85rem; color: #ccc;
         }
-        .nav-links a:hover { color: var(--cs-gold); border-bottom: 2px solid var(--cs-gold); }
+        .nav-links a:hover { color: #fff; text-shadow: 0 0 10px rgba(238, 182, 43, 0.5); }
 
-        /* --- HERO SECTION (Spacious & Tactical) --- */
-        section { padding: 100px 0; } /* Increased spacing */
-        
+        /* HERO SECTION */
+        section { padding: 50px 0; }
         .hero { 
-            display: flex; align-items: center; justify-content: space-between; gap: 80px; 
-            margin-top: 40px;
+            display: flex; align-items: center; justify-content: space-between; gap: 40px; 
+            margin-top: 20px;
         }
+
+        /* Hero Right: AGENT PROFILE (Left on Mobile) */
+        .hero-agent { 
+            position: relative; width: 300px; text-align: center;
+            background: rgba(30, 30, 35, 0.8);
+            padding: 30px;
+            border-top: 3px solid var(--cs-gold);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hero-img {
+            width: 140px; height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--cs-gold);
+            padding: 4px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 25px rgba(238, 182, 43, 0.2);
+        }
+        .agent-name { font-size: 1.4rem; font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 5px; }
+        .agent-status { font-size: 0.8rem; color: var(--cs-gold); letter-spacing: 1px; font-weight: 600; }
 
         /* Hero Left: INFO */
         .hero-info { flex: 1; max-width: 650px; }
         
         .rank-badge {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: rgba(238, 182, 43, 0.1); 
-            border-left: 4px solid var(--cs-gold);
-            color: var(--cs-gold); padding: 8px 20px; font-weight: 700; font-size: 0.9rem;
-            text-transform: uppercase; letter-spacing: 2px;
-            margin-bottom: 30px; /* Added space */
+            display: inline-block;
+            background: rgba(238, 182, 43, 0.15); border: 1px solid var(--cs-gold);
+            color: var(--cs-gold); padding: 5px 12px; font-weight: 700; font-size: 0.8rem;
+            margin-bottom: 15px; text-transform: uppercase;
         }
 
         .hero-info h1 { 
-            font-size: 4rem; line-height: 1; font-weight: 800; 
-            text-transform: uppercase; margin-bottom: 25px;
-            font-style: italic;
-            text-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+            font-size: 3rem; line-height: 1.1; font-weight: 700; 
+            text-transform: uppercase; margin-bottom: 15px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
         }
         .hero-info span { color: var(--cs-blue); }
         
         .hero-info p { 
-            font-size: 1.2rem; color: #ccc; margin-bottom: 40px; 
-            max-width: 90%; line-height: 1.7;
+            font-size: 1rem; color: #bbb; margin-bottom: 25px; 
+            border-left: 3px solid var(--cs-red); padding-left: 15px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.05), transparent);
+            padding: 10px 15px;
         }
 
-        /* TACTICAL BUTTONS (Angled) */
-        .hero-btns { display: flex; flex-wrap: wrap; gap: 20px; }
+        /* BUTTONS */
+        .hero-btns { display: flex; flex-wrap: wrap; gap: 10px; }
         
         .btn {
-            padding: 15px 35px; 
-            font-weight: 800; text-transform: uppercase; font-size: 0.95rem;
-            cursor: pointer; min-width: 160px; text-align: center;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            transition: 0.3s;
-            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); /* CS2 Shape */
-            border: none;
+            padding: 12px 20px; 
+            background: rgba(50, 50, 55, 0.9);
+            color: #fff; border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 700; text-transform: uppercase; font-size: 0.85rem;
+            cursor: pointer; text-align: center;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: 0.2s; flex: 1; min-width: 140px;
+            border-radius: 4px; /* Simple corners for mobile compatibility */
         }
-        .btn:hover { transform: translateY(-3px) scale(1.02); }
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
 
-        .btn-play { 
-            background: var(--cs-gold); color: #000; 
-            box-shadow: 0 0 20px rgba(238, 182, 43, 0.4);
-        }
-        .btn-admin { 
-            background: rgba(255,255,255,0.1); color: #fff; 
-            border: 1px solid rgba(255,255,255,0.2); 
-        }
-        .btn-admin:hover { background: rgba(96, 165, 250, 0.2); border-color: var(--cs-blue); }
+        .btn-play { background: var(--cs-gold); color: #000; border: none; }
+        .btn-admin { border-color: var(--cs-blue); color: var(--cs-blue); }
+        .btn-group { border-color: var(--cs-red); color: var(--cs-red); }
 
-        .btn-group { 
-            background: rgba(255,255,255,0.1); color: #fff;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        .btn-group:hover { background: rgba(248, 113, 113, 0.2); border-color: var(--cs-red); }
-
-
-        /* Hero Right: AGENT PROFILE */
-        .hero-agent { 
-            position: relative; width: 320px; text-align: center;
-            background: var(--card-bg);
-            padding: 40px;
-            clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
-            border-top: 4px solid var(--cs-gold);
-            backdrop-filter: blur(10px);
-        }
-        
-        .hero-img {
-            width: 160px; height: 160px;
-            border-radius: 50%; 
-            object-fit: cover;
-            border: 4px solid rgba(255,255,255,0.1);
-            margin-bottom: 20px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-        .agent-name { font-size: 1.5rem; font-weight: 800; color: #fff; text-transform: uppercase; margin-bottom: 5px; }
-        .agent-status { font-size: 0.9rem; color: var(--cs-gold); letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
-
-
-        /* --- SECTIONS HEADERS --- */
+        /* SECTIONS */
         .section-header { 
-            display: flex; align-items: center; margin-bottom: 50px; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;
+            display: flex; align-items: center; margin-bottom: 30px; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
         }
-        .section-title { font-size: 2.5rem; font-weight: 800; text-transform: uppercase; color: #fff; font-style: italic; letter-spacing: 1px; }
-        .section-title i { color: var(--cs-gold); margin-right: 15px; }
+        .section-title { font-size: 1.8rem; font-weight: 700; text-transform: uppercase; color: #fff; }
+        .section-title i { color: var(--cs-gold); margin-right: 10px; }
 
-        /* --- GROUPS LIST (Lobby Style) --- */
+        /* PROOF LIST */
         .proof-grid { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 15px; 
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; 
         }
         .proof-item {
-            background: linear-gradient(90deg, rgba(30, 30, 35, 0.8), rgba(20, 20, 25, 0.9));
-            padding: 18px 25px;
-            display: flex; align-items: center; gap: 20px;
-            border-left: 4px solid rgba(255,255,255,0.1);
+            background: rgba(40, 40, 45, 0.6);
+            padding: 12px;
+            display: flex; align-items: center; gap: 15px;
+            border-left: 3px solid #444;
             transition: 0.2s;
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 15px 100%, 0 calc(100% - 15px));
         }
-        .proof-item:hover { 
-            background: rgba(50, 50, 60, 0.9); 
-            transform: translateX(5px); 
-        }
+        .proof-item:hover { background: rgba(60, 60, 70, 0.9); transform: translateX(5px); }
         
-        .proof-icon { width: 30px; text-align: center; font-size: 1.4rem; }
-        .proof-info { display: flex; flex-direction: column; }
-        .proof-name { font-size: 1rem; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
-        .proof-role { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #888; }
+        .proof-icon { width: 25px; text-align: center; font-size: 1.1rem; }
+        .proof-name { font-size: 0.9rem; font-weight: 700; color: #eee; }
+        .proof-role { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
         
-        /* Roles Colors */
-        .item-admin:hover { border-left-color: var(--cs-gold); }
-        .item-admin .proof-icon { color: var(--cs-gold); }
-        
-        .item-mod:hover { border-left-color: var(--cs-blue); }
-        .item-mod .proof-icon { color: var(--cs-blue); }
+        .item-admin { border-left-color: var(--cs-gold); }
+        .item-admin .proof-icon, .item-admin .proof-role { color: var(--cs-gold); }
+        .item-mod { border-left-color: var(--cs-blue); }
+        .item-mod .proof-icon, .item-mod .proof-role { color: var(--cs-blue); }
 
-
-        /* --- PRICING TABLE (Scoreboard) --- */
-        .scoreboard-container {
+        /* PRICING TABLE (Scrollable) */
+        .table-wrapper {
+            overflow-x: auto; /* Гар утсан дээр гүйлгэх боломжтой */
             background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 4px;
-            overflow: hidden;
         }
-        table { width: 100%; border-collapse: collapse; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; /* Force width */ }
         th { 
-            background: rgba(255,255,255,0.05); color: #888; 
-            padding: 20px 25px; text-align: left; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;
+            background: rgba(255,255,255,0.05); color: #aaa; 
+            padding: 15px; text-align: left; font-size: 0.8rem; text-transform: uppercase; 
         }
         td { 
-            padding: 20px 25px; border-bottom: 1px solid rgba(255,255,255,0.05); 
-            font-size: 1.1rem; font-weight: 600;
+            padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); 
+            font-size: 0.9rem; font-weight: 600; white-space: nowrap;
         }
-        tr:hover td { background: rgba(255,255,255,0.03); color: #fff; }
-        .val-money { color: #4ade80; font-family: monospace; } 
+        .val-money { color: #4ade80; } 
         .val-free { color: var(--cs-gold); font-weight: 800; }
 
-
-        /* --- INVENTORY (Market) --- */
-        .inventory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        /* INVENTORY */
+        .inventory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         
         .inv-item {
             background: linear-gradient(180deg, rgba(40,40,45,0.9), rgba(20,20,25,0.95));
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid #444;
             transition: 0.3s; position: relative;
-            overflow: hidden;
             display: flex; flex-direction: column;
         }
-        .inv-item:hover { 
-            transform: translateY(-5px); 
-            border-color: rgba(255,255,255,0.3); 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
-        }
+        .inv-item:hover { transform: translateY(-3px); border-color: #888; }
 
-        /* Rarity Glows */
-        .rarity-bar { height: 4px; width: 100%; }
-        .rarity-red { background: #eb4b4b; box-shadow: 0 0 10px #eb4b4b; } 
-        .rarity-pink { background: #d32ce6; box-shadow: 0 0 10px #d32ce6; } 
-        .rarity-purple { background: #8847ff; box-shadow: 0 0 10px #8847ff; } 
+        .rarity-bar { height: 3px; width: 100%; }
+        .rarity-red { background: #eb4b4b; } 
+        .rarity-pink { background: #d32ce6; } 
+        .rarity-purple { background: #8847ff; } 
 
         .inv-img-box { 
-            width: 100%; height: 220px; 
+            width: 100%; height: 180px; 
             background: radial-gradient(circle, #25252a, #151515);
-            padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex; align-items: center; justify-content: center;
         }
-        .inv-img { width: 100%; height: 100%; object-fit: contain; transition: 0.4s; }
-        .inv-item:hover .inv-img { transform: scale(1.1) rotate(2deg); }
+        .inv-img { width: 100%; height: 100%; object-fit: contain; }
         
-        .inv-details { padding: 25px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .skin-name { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
-        .skin-wear { font-size: 0.85rem; color: #888; margin-bottom: 15px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        .inv-details { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .skin-name { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 5px; text-transform: uppercase; }
+        .skin-wear { font-size: 0.8rem; color: #888; margin-bottom: 15px; display: block; text-transform: uppercase; }
         
         .inv-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-        .skin-price { font-size: 1.4rem; font-weight: 800; color: var(--cs-gold); }
+        .skin-price { font-size: 1.2rem; font-weight: 700; color: var(--cs-gold); }
         
         .btn-inspect { 
-            background: rgba(255,255,255,0.1); color: #fff; padding: 8px 20px; 
-            font-size: 0.8rem; border: 1px solid rgba(255,255,255,0.2); 
+            background: rgba(255,255,255,0.1); color: #fff; padding: 6px 15px; 
+            font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.2); 
             text-transform: uppercase; cursor: pointer; transition: 0.2s; font-weight: 700;
             border-radius: 4px;
         }
@@ -265,20 +231,30 @@
 
         /* FOOTER */
         footer { 
-            margin-top: 80px; padding: 50px 0; text-align: center; 
+            margin-top: 60px; padding: 30px 0; text-align: center; 
             background: #08080a; border-top: 2px solid var(--cs-gold); 
         }
-        .footer-social a { font-size: 1.6rem; margin: 0 15px; color: #666; transition: 0.3s; }
-        .footer-social a:hover { color: var(--cs-gold); transform: scale(1.2); }
+        .footer-social a { font-size: 1.4rem; margin: 0 12px; color: #666; transition: 0.3s; }
+        .footer-social a:hover { color: var(--cs-gold); }
 
-        /* MOBILE RESPONSIVE */
+        /* --- MOBILE RESPONSIVE FIXES --- */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; gap: 50px; }
-            .hero-info h1 { font-size: 3rem; }
-            .hero-btns { justify-content: center; }
-            .nav-links { display: none; }
-            .hero-agent { width: 100%; max-width: 350px; margin: 0 auto; }
+            .header-inner { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 15px; font-size: 0.8rem; }
+            
+            .hero { flex-direction: column-reverse; text-align: center; gap: 30px; }
+            .hero-agent { width: 100%; max-width: 100%; border-top: none; border-bottom: 2px solid var(--cs-gold); }
+            
+            .hero-info h1 { font-size: 2.2rem; }
+            .hero-info p { border-left: none; border-top: 3px solid var(--cs-red); text-align: left; padding: 15px 10px; }
+            
+            .hero-btns { flex-direction: column; width: 100%; }
+            .btn { width: 100%; padding: 15px; }
+
             .proof-grid { grid-template-columns: 1fr; }
+            
+            .section-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .section-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -292,10 +268,10 @@
                     <span>GAME MARKET</span>
                 </div>
                 <nav class="nav-links">
-                    <a href="#proof">PROOF</a>
-                    <a href="#services">PRICING</a>
-                    <a href="#market">MARKET</a>
-                    <a href="#contact">CONTACT</a>
+                    <a href="#proof">Баталгаа</a>
+                    <a href="#services">Үйлчилгээ</a>
+                    <a href="#market">Зарах</a>
+                    <a href="#contact">Холбогдох</a>
                 </nav>
             </div>
         </div>
@@ -304,19 +280,19 @@
     <section class="container">
         <div class="hero">
             <div class="hero-info">
-                <div class="rank-badge"><i class="fas fa-shield-alt"></i> VERIFIED ADMIN</div>
-                <h1>SECURE <br> <span style="color:var(--cs-blue)">MIDMAN</span> SERVICE</h1>
-                <p>Trusted by Mongolia's largest gaming communities. Fast, Secure, and Reliable transactions for your digital assets. No scams, just pure business.</p>
+                <div class="rank-badge"><i class="fas fa-shield-alt"></i> БАТАЛГААТ АДМИН</div>
+                <h1>НАЙДВАРТАЙ <br> <span style="color:var(--cs-blue)">MIDMAN</span> ҮЙЛЧИЛГЭЭ</h1>
+                <p>Монголын томоохон группүүдийн Админ, Модератор. Таны цахим хөрөнгийг эрсдэлээс бүрэн хамгаална. Найдвартай, Хурдан шуурхай.</p>
                 
                 <div class="hero-btns">
                     <a href="#market" class="btn btn-play">
-                        <i class="fas fa-shopping-cart"></i> BUY ACCOUNTS
+                        <i class="fas fa-shopping-cart"></i> Аккоунт Авах
                     </a>
                     <a href="https://www.facebook.com/jargalsaikhan.official" target="_blank" class="btn btn-admin">
-                        <i class="fas fa-user-shield"></i> ADMIN CHAT
+                        <i class="fas fa-user-shield"></i> Admin Chat
                     </a>
                     <a href="https://m.me/cm/AbadrhKBoffAja4U/?send_source=cm:copy_invite_link" target="_blank" class="btn btn-group">
-                        <i class="fas fa-users"></i> JOIN GROUP
+                        <i class="fas fa-users"></i> Group Chat
                     </a>
                 </div>
             </div>
@@ -331,7 +307,7 @@
 
     <section id="proof" class="container">
         <div class="section-header">
-            <div class="section-title"><i class="fas fa-user-friends"></i> TRUSTED GROUPS</div>
+            <div class="section-title"><i class="fas fa-user-friends"></i> МИНИЙ ГРУППҮҮД</div>
         </div>
         <div class="proof-grid">
             <a href="https://facebook.com/profile.php?id=61561712856021" target="_blank" class="proof-item item-admin">
@@ -388,37 +364,37 @@
 
     <section id="services" class="container">
         <div class="section-header">
-            <div class="section-title"><i class="fas fa-list-alt"></i> SERVICE PRICES</div>
+            <div class="section-title"><i class="fas fa-list-alt"></i> ҮНЭ ТАРИФ</div>
         </div>
-        <div class="scoreboard-container">
+        <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>SERVICE NAME</th>
-                        <th>CONDITION</th>
-                        <th>COST</th>
+                        <th>ҮЙЛЧИЛГЭЭ</th>
+                        <th>НӨХЦӨЛ</th>
+                        <th>ҮНЭ / ХӨЛС</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Midman Service (Low Tier)</td>
+                        <td>Midman (Бага дүн)</td>
                         <td>0 - 1,000,000₮</td>
                         <td class="val-money">5,000₮</td>
                     </tr>
                     <tr>
-                        <td>Midman Service (High Tier)</td>
-                        <td>1,000,000₮ +</td>
+                        <td>Midman (Их дүн)</td>
+                        <td>1,000,000₮ - Дээш</td>
                         <td class="val-money">1%</td>
                     </tr>
                     <tr>
-                        <td>Account Broker</td>
-                        <td>Selling Fee</td>
+                        <td>Аккаунт заруулах</td>
+                        <td>Зарж өгсөн дүнгийн</td>
                         <td class="val-money">5%</td>
                     </tr>
                     <tr>
-                        <td>Account Evaluation</td>
-                        <td>Check Bind/Price</td>
-                        <td class="val-free">FREE</td>
+                        <td>Аккаунт үнэлгээ / Bind</td>
+                        <td>Зөвлөгөө</td>
+                        <td class="val-free">ҮНЭГҮЙ</td>
                     </tr>
                 </tbody>
             </table>
@@ -427,7 +403,7 @@
 
     <section id="market" class="container">
         <div class="section-header">
-            <div class="section-title"><i class="fas fa-box-open"></i> LIVE INVENTORY</div>
+            <div class="section-title"><i class="fas fa-box-open"></i> ЗАРАХ АККАУНТУУД</div>
         </div>
         <div class="inventory-grid">
             
@@ -443,7 +419,7 @@
                     </div>
                     <div class="inv-footer">
                         <span class="skin-price">2,500,000₮</span>
-                        <a href="https://m.me/61561712856021" target="_blank" class="btn-inspect">INSPECT</a>
+                        <a href="https://m.me/61561712856021" target="_blank" class="btn-inspect">АВАХ</a>
                     </div>
                 </div>
             </div>
@@ -460,7 +436,7 @@
                     </div>
                     <div class="inv-footer">
                         <span class="skin-price">2,000,000₮</span>
-                        <a href="https://m.me/61561712856021" target="_blank" class="btn-inspect">INSPECT</a>
+                        <a href="https://m.me/61561712856021" target="_blank" class="btn-inspect">АВАХ</a>
                     </div>
                 </div>
             </div>
@@ -477,7 +453,7 @@
                     </div>
                     <div class="inv-footer">
                         <span class="skin-price">800,000₮</span>
-                        <a href="https://m.me/61561712856021" target="_blank" class="btn-inspect">INSPECT</a>
+                        <a href="https://m.me/61561712856021" target="_blank" class="btn-inspect">АВАХ</a>
                     </div>
                 </div>
             </div>
@@ -494,7 +470,7 @@
                 <a href="https://www.facebook.com/gamemarket.mn" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://m.me/61561712856021" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
             </div>
-            <p style="margin-top: 20px; font-size: 0.8rem; color: #555;">&copy; 2025 ALL RIGHTS RESERVED. SECURE SERVER.</p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #666;">&copy; 2025 ALL RIGHTS RESERVED. SECURE SERVER.</p>
         </div>
     </footer>
 
