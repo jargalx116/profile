@@ -40,19 +40,6 @@
             border-right: 1px solid var(--border);
         }
 
-        /* --- CLICK ANIMATIONS --- */
-        @keyframes neonPulse {
-            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); border-color: var(--primary); }
-            100% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); border-color: var(--primary); }
-        }
-
-        .clickable:active, .btn-social:active, .admin-card:active, .filter-chip:active, .nav-item:active, .product-card:active, .group-item:active, .btn-buy:active {
-            animation: neonPulse 0.4s ease-out;
-            background-color: rgba(59, 130, 246, 0.1) !important;
-            transform: scale(0.97);
-            transition: 0.1s;
-        }
-
         /* --- HEADER --- */
         .top-bar {
             padding: 15px 20px;
@@ -176,13 +163,13 @@
             display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--primary); 
             flex-shrink: 0;
         }
-        .g-details h4 { font-size: 0.95rem; font-weight: 600; }
-        .g-details p { font-size: 0.8rem; color: var(--text-muted); }
+        .g-details h4 { font-size: 0.9rem; font-weight: 600; line-height: 1.3; }
+        .g-details p { font-size: 0.75rem; color: var(--text-muted); }
         .role-badge { margin-left: auto; font-size: 0.7rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; letter-spacing: 0.5px; white-space: nowrap;}
         .role-admin { background: var(--gold); color: #000; }
         .role-mod { background: rgba(59, 130, 246, 0.2); color: var(--primary); border: 1px solid var(--primary); }
 
-        /* === SWIPE MODAL (FIXED SIZE) === */
+        /* === SWIPE MODAL (FIXED) === */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); z-index: 100; display: none;
@@ -198,11 +185,11 @@
         }
         .m-close-btn { font-size: 1.5rem; color: var(--text-main); cursor: pointer; padding: 5px; }
 
-        /* CAROUSEL FIX: 16:9 Aspect Ratio & No Fixed Height */
+        /* CAROUSEL - Full Image Fit */
         .m-carousel {
             width: 100%; 
-            aspect-ratio: 16/9; /* Тоглоомын дэлгэцийн харьцаа */
-            background: transparent; /* Хар фонгүй */
+            height: 300px; /* Adjust height slightly */
+            background: #000; /* Black background to fill gaps */
             display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch; scrollbar-width: none;
         }
@@ -213,9 +200,12 @@
             scroll-snap-align: center;
             display: flex; align-items: center; justify-content: center; position: relative;
         }
+        
+        /* FIX: Object fit contain prevents cropping */
         .m-img { 
-            width: 100%; height: 100%; 
-            object-fit: cover; /* Бүтэн дэлгэц, хар зайгүй */
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Ensures full image is seen */
         }
         
         .m-indicators {
@@ -255,6 +245,7 @@
         .nav-item.active { color: var(--primary); }
         .nav-item.active i { transform: translateY(-2px); text-shadow: 0 0 10px var(--primary); }
 
+        /* Animation class */
         .touch-pulse {
             animation: neonPulse 0.4s ease-out;
             background-color: rgba(59, 130, 246, 0.1) !important;
@@ -359,19 +350,24 @@
             <div id="tab-proofs" class="tab-content">
                 <h3 style="font-size:1rem; margin-bottom:15px;">Admin Groups</h3>
                 
-                <a href="https://facebook.com/groups/186310009926522" target="_blank" class="group-item">
+                <a href="https://facebook.com/profile.php?id=61561712856021" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-crown"></i></div>
-                    <div class="g-details"><h4>PUBG Trade</h4><p>34K Members</p></div>
+                    <div class="g-details"><h4>Game Market MN</h4><p>PAGE ADMIN</p></div>
+                    <span class="role-badge role-admin">ADMIN</span>
+                </a>
+                <a href="https://facebook.com/groups/186310009926522" target="_blank" class="group-item">
+                    <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="g-details"><h4>PUBG Аккоунт худалдаа 🇲🇳</h4><p>34K ADMIN</p></div>
                     <span class="role-badge role-admin">ADMIN</span>
                 </a>
                 <a href="https://facebook.com/groups/905083090111442" target="_blank" class="group-item">
-                    <div class="g-icon"><i class="fas fa-crown"></i></div>
-                    <div class="g-details"><h4>PUBG Midman</h4><p>11K Members</p></div>
+                    <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="g-details"><h4>PUBG MOBILE & Mid 🇲🇳</h4><p>11K ADMIN</p></div>
                     <span class="role-badge role-admin">ADMIN</span>
                 </a>
                 <a href="https://facebook.com/groups/199627921906512" target="_blank" class="group-item">
-                    <div class="g-icon"><i class="fas fa-crown"></i></div>
-                    <div class="g-details"><h4>Standoff 2</h4><p>30K Members</p></div>
+                    <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="g-details"><h4>Standoff 2 Mongolia 🇲🇳</h4><p>30K ADMIN</p></div>
                     <span class="role-badge role-admin">ADMIN</span>
                 </a>
 
@@ -379,42 +375,42 @@
                 
                 <a href="https://facebook.com/groups/2998606320453023" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>Mobile Legends</h4><p>140K Members</p></div>
+                    <div class="g-details"><h4>Mobile legends: mongolia✅</h4><p>140K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
                 <a href="https://facebook.com/groups/1253738194719122" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>PUBG Mobile</h4><p>85K Members</p></div>
+                    <div class="g-details"><h4>PUBG Mobile: Mongolia 🇲🇳</h4><p>85K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
                 <a href="https://facebook.com/groups/806727429744887" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>Standoff Trade</h4><p>48K Members</p></div>
+                    <div class="g-details"><h4>Standoff 2: Mongolia🇲🇳</h4><p>48K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
                 <a href="https://facebook.com/groups/5321202191332717" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>STALWART</h4><p>44K Members</p></div>
+                    <div class="g-details"><h4>STALWART ESPORTS</h4><p>44K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
                 <a href="https://facebook.com/groups/1851470735099237" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>PUBGM Trade</h4><p>31K Members</p></div>
+                    <div class="g-details"><h4>PUBG MOBILE 🇲🇳 ХУДАЛДАА</h4><p>31K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
                 <a href="https://facebook.com/groups/146728474305150" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>Pubg Mobile MN</h4><p>30K Members</p></div>
+                    <div class="g-details"><h4>Pubg Mobile Mongolia 🇲🇳</h4><p>30K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
                 <a href="https://facebook.com/groups/980953797128182" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>MLBB Trade</h4><p>16K Members</p></div>
+                    <div class="g-details"><h4>MLBB-Mongolia acc awn zarn</h4><p>16K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
                 <a href="https://facebook.com/groups/793255685887110" target="_blank" class="group-item">
                     <div class="g-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="g-details"><h4>Acc Rent</h4><p>4K Members</p></div>
+                    <div class="g-details"><h4>Acc turees | PUBG ,ML |</h4><p>4K MOD</p></div>
                     <span class="role-badge role-mod">MOD</span>
                 </a>
             </div>
