@@ -2,365 +2,288 @@
 <html lang="mn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Market MN</title>
-    
-    <link rel="icon" href="https://i.ibb.co/chSfJZh6/Gemini-Generated-Image-6idkra6idkra6idk.png" type="image/x-icon">
-    <link rel="shortcut icon" href="https://i.ibb.co/chSfJZh6/Gemini-Generated-Image-6idkra6idkra6idk.png" type="image/x-icon">
-
-    <meta property="og:title" content="Game Market MN ">
-    <meta property="og:description" content="Найдвартай Midman үйлчилгээ, Тоглоомын аккаунт худалдаа. Verified Admin.">
-    <meta property="og:image" content="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://gamemarketmn.vercel.app">
-    <meta property="og:type" content="website">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>S I I L E N</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Teko:wght@500;600;700&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --bg-body: #050508;
-            --bg-card: rgba(20, 20, 35, 0.95);
-            --blue: #00f2ff;
-            --purple: #bc13fe;
-            --pink: #ff00c1; 
-            --gradient: linear-gradient(90deg, var(--blue), var(--purple));
-            --text-white: #ffffff;
-            --text-gray: #a0a0c0;
-            --border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Manrope', sans-serif; background-color: #050505; color: #f4f4f5; -webkit-tap-highlight-color: transparent; }
+        .font-display { font-family: 'Teko', sans-serif; letter-spacing: 0.5px; }
+        .font-num { font-family: 'Rajdhani', sans-serif; letter-spacing: 0.5px; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .ambient-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15), transparent 60%), #050505; }
         
-        body {
-            font-family: 'Roboto Condensed', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-white);
-            line-height: 1.4;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(188, 19, 254, 0.05) 0%, transparent 40%);
-            overflow-x: hidden;
-        }
+        /* Animations */
+        .hover-lift { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .hover-lift:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+        .hover-lift:active { transform: scale(0.95); }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+        .glass-panel { background: rgba(25, 25, 28, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); }
 
-        .container { max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 15px; }
+        /* Glow Effects */
+        .glow-border:hover { border-color: rgba(255, 255, 255, 0.2); }
+        .glow-blue:hover { border-color: rgba(59, 130, 246, 0.5); box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
+        .glow-purple:hover { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); }
+        .glow-yellow:hover { border-color: rgba(234, 179, 8, 0.5); box-shadow: 0 0 20px rgba(234, 179, 8, 0.2); }
+        .glow-green:hover { border-color: rgba(34, 197, 94, 0.5); box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
 
-        /* RGB NEON BORDER ANIMATION */
-        @keyframes rgb-border {
-            0% { border-color: var(--blue); box-shadow: 0 0 15px rgba(0, 242, 255, 0.4); }
-            50% { border-color: var(--purple); box-shadow: 0 0 15px rgba(188, 19, 254, 0.4); }
-            100% { border-color: var(--pink); box-shadow: 0 0 15px rgba(255, 0, 193, 0.4); }
-        }
+        /* Shimmer */
+        .shimmer { position: relative; overflow: hidden; }
+        .shimmer::after { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(to right, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%); transform: skewX(-20deg) translateX(-150%); animation: shimmer 3s infinite; }
+        @keyframes shimmer { 100% { transform: skewX(-20deg) translateX(150%); } }
 
-        /* HEADER */
-        header {
-            background: rgba(5, 5, 8, 0.98);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-            padding: 10px 0;
-        }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-transform: uppercase; }
-        .logo span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links a { margin-left: 20px; font-weight: 700; color: var(--text-gray); text-transform: uppercase; font-size: 0.85rem; }
-        .nav-links a:hover { color: var(--blue); }
-
-        /* HERO - Compact */
-        section { padding: 40px 0; }
-        .hero { display: flex; align-items: center; justify-content: center; gap: 30px; padding-top: 20px; }
+        .modal-enter { animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1) forwards; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
         
-        .hero-card {
-            flex: 0 0 320px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        /* HERO CARD HOVER RGB EFFECT */
-        .hero-card:hover { animation: rgb-border 2s infinite alternate; }
-
-        .hero-img {
-            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-            border: 2px solid transparent; 
-            background: linear-gradient(var(--bg-body), var(--bg-body)) padding-box, var(--gradient) border-box;
-            padding: 3px; margin-bottom: 10px;
-        }
-        .hero-card h2 { font-size: 1.4rem; margin-bottom: 5px; font-weight: 700; color: #fff; }
-        .badge { background: rgba(0, 242, 255, 0.1); color: var(--blue); padding: 3px 12px; font-size: 0.75rem; font-weight: 700; border: 1px solid var(--blue); border-radius: 50px; display: inline-block; margin-bottom: 15px; }
-        
-        .hero-btns { display: flex; flex-direction: column; gap: 8px; }
-        .btn-profile { padding: 8px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 6px; font-size: 0.85rem; transition: 0.3s; }
-        
-        .btn-page { background: var(--gradient); color: #fff; }
-        .btn-page:hover { opacity: 0.9; transform: translateY(-2px); }
-
-        .btn-admin { background: transparent; border: 1px solid var(--purple); color: var(--text-white); }
-        .btn-admin:hover { background: rgba(188, 19, 254, 0.1); border-color: var(--blue); }
-
-        /* GROUP CHAT BUTTON STYLE */
-        .btn-group { background: transparent; border: 1px solid var(--blue); color: var(--blue); }
-        .btn-group:hover { background: rgba(0, 242, 255, 0.1); box-shadow: 0 0 15px rgba(0, 242, 255, 0.3); }
-        
-        .hero-text { flex: 1; max-width: 550px; }
-        .hero-text h1 { font-size: 2.8rem; line-height: 1; font-weight: 900; color: #fff; margin-bottom: 15px; }
-        .hero-text span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-text p { color: var(--text-gray); margin-bottom: 20px; border-left: 3px solid var(--purple); padding-left: 15px; font-size: 1rem; }
-        .btn-main { padding: 10px 25px; background: transparent; color: var(--blue); font-weight: 700; border: 2px solid var(--blue); border-radius: 50px; display: inline-block; font-size: 0.9rem; }
-
-        .section-title { font-size: 1.8rem; text-align: center; margin-bottom: 25px; font-weight: 800; }
-        .section-title span { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-bottom: 2px solid var(--purple); }
-
-        /* PROOF GRID */
-        .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
-        .proof-link { display: flex; align-items: center; background: var(--bg-card); padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; transition: 0.3s; }
-        .proof-link i { font-size: 1.1rem; margin-right: 10px; width: 25px; text-align: center; }
-        .proof-text { font-size: 0.8rem; font-weight: 700; color: #fff; }
-        
-        .proof-link:hover { transform: translateX(5px); animation: rgb-border 3s infinite alternate; }
-
-        .proof-link.admin { border-left: 3px solid var(--blue); } .proof-link.admin i { color: var(--blue); }
-        .proof-link.mod { border-left: 3px solid var(--purple); } .proof-link.mod i { color: var(--purple); }
-
-        /* MARKET GRID */
-        .market-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 20px; 
-            justify-content: center;
-            align-items: start; 
-        }
-
-        .account-card { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border-color); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            transition: 0.3s; 
-            width: 100%;
-            height: fit-content; 
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* MARKET CARD HOVER RGB EFFECT */
-        .account-card:hover { 
-            animation: rgb-border 2s infinite alternate; 
-            transform: translateY(-5px);
-        }
-        
-        .acc-img-container { width: 100%; line-height: 0; }
-        .acc-img-container img { width: 100%; height: auto; display: block; object-fit: contain; transition: 0.5s; }
-        .account-card:hover .acc-img-container img { transform: scale(1.02); }
-
-        .acc-info { padding: 15px; display: flex; flex-direction: column; gap: 5px; }
-        .acc-title { font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.2; }
-        .acc-details { color: var(--text-gray); font-size: 0.85rem; line-height: 1.3; margin-bottom: 5px; }
-        .price-tag { font-size: 1.3rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; display: block; margin: 5px 0; }
-        
-        .btn-buy { 
-            width: 100%; padding: 10px; background: transparent; color: #fff; 
-            border: 1px solid var(--border-color); border-radius: 6px; 
-            font-weight: 700; cursor: pointer; display: block; text-align: center; 
-            font-size: 0.9rem; margin-top: 5px; transition: 0.3s;
-        }
-        .btn-buy:hover { background: var(--gradient); border-color: transparent; box-shadow: 0 0 10px var(--purple); }
-
-        /* TARIFF TABLE */
-        .table-container { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; max-width: 800px; margin: 0 auto; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; min-width: 400px; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
-        th { color: var(--blue); } 
-        .free-text { color: #00ff88; font-weight: bold; }
-
-        footer { background: #020205; padding: 40px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 20px;}
-        .footer-social a { font-size: 1.3rem; margin: 0 10px; color: var(--text-gray); transition: 0.3s; }
-        .footer-social a:hover { color: var(--blue); }
-
-        /* MOBILE RESPONSIVE FIXES */
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; gap: 30px; }
-            .hero-card { width: 100%; max-width: 350px; flex: auto; }
-            .nav-links { display: none; } 
-            section { padding: 30px 0; }
-            .market-grid { grid-template-columns: 1fr; padding: 0 10px; }
-            .proof-grid { grid-template-columns: 1fr; }
-        }
+        .fade-in { animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
-<body>
+<body class="pb-28 antialiased">
 
-    <header>
-        <div class="container">
-            <div class="header-inner">
-                <div class="logo">GAME <span>MARKET</span></div>
-                <nav class="nav-links">
-                    <a href="#proof">Баталгаа</a>
-                    <a href="#services">Үйлчилгээ</a>
-                    <a href="#market">Аккоунт</a>
-                    <a href="#contact">Холбогдох</a>
-                </nav>
+    <div class="ambient-bg"></div>
+
+    <header class="fixed top-0 w-full z-40 bg-[#050505]/80 backdrop-blur-xl border-b border-white/5">
+        <div class="px-4 h-16 flex items-center justify-between max-w-lg mx-auto">
+            <div class="flex items-center gap-2">
+                <div class="w-9 h-9 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white font-black font-display text-xl shadow-lg shadow-blue-500/30 hover:scale-110 transition">G</div>
+                <span class="font-bold text-lg tracking-tight text-white">S I I L E N</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20 shadow-[0_0_10px_rgba(34,197,94,0.2)]">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-[10px] font-bold text-green-500 uppercase tracking-wide">Online</span>
             </div>
         </div>
     </header>
 
-    <section class="container">
-        <div class="hero">
-            <div class="hero-card">
-                <img src="https://i.ibb.co/gLVdkq3D/Gemini-Generated-Image-6idkra6idkra6idk-modified.png" alt="Admin Profile" class="hero-img">
-                <h2>Game Market MN</h2>
-                <div class="badge"><i class="fas fa-check-circle"></i> VERIFIED ADMIN</div>
-                <p style="color: #bbb; font-size: 0.85rem; margin-bottom: 20px;">
-                    Найдвартай Midman үйлчилгээ & <br> Аккоунт худалдаа.
-                </p>
-                <div class="hero-btns">
-                    <a href="https://www.facebook.com/gamemarket.mn" target="_blank" class="btn-profile btn-page">
-                        <i class="fab fa-facebook-square"></i> PAGE LINK
-                    </a>
-                    <a href="https://www.facebook.com/jargalsaikhan.official" target="_blank" class="btn-profile btn-admin">
-                        <i class="fas fa-user-shield"></i> ADMIN FB
-                    </a>
-                    <a href="https://m.me/cm/AbadrhKBoffAja4U/?send_source=cm:copy_invite_link" target="_blank" class="btn-profile btn-group">
-                        <i class="fas fa-users"></i> GROUP CHAT
-                    </a>
+    <main class="pt-24 px-4 max-w-lg mx-auto min-h-screen">
+        
+        <section id="home" class="tab-content">
+            <div class="flex flex-col items-center justify-center py-6 mb-8 relative">
+                <div class="absolute inset-0 bg-blue-600/10 blur-[60px] rounded-full z-[-1]"></div>
+                <div class="relative mb-5 group">
+                    <img src="https://i.ibb.co/fVzH9LPS/595116297-814375481574499-6887627840659721607-n.jpg" class="relative w-28 h-28 rounded-full border-[3px] border-blue-500/50 shadow-2xl hover:scale-105 transition duration-500">
+                    <div class="absolute bottom-1 right-1 bg-blue-600 text-white text-xs p-1.5 rounded-full border-4 border-[#050505] shadow-lg"><i class="fas fa-check"></i></div>
+                </div>
+                <h1 class="text-3xl font-black text-white mb-2 tracking-tighter drop-shadow-lg">S I I L E N</h1>
+                <p class="text-sm text-gray-400 mb-6 text-center px-4 leading-relaxed font-medium">Хамгийн найдвартай, хурдан шуурхай үйлчилгээ.</p>
+                <div class="flex gap-4 w-full px-2">
+                    <button onclick="openLink(LINKS.fbPage)" class="flex-1 glass-panel text-white py-4 rounded-2xl font-bold text-sm hover-lift glow-border flex items-center justify-center gap-2 group"><i class="fab fa-facebook text-blue-500 text-xl"></i> Page</button>
+                    <button onclick="openLink(LINKS.pageChat)" class="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-2xl font-bold text-sm hover-lift flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30"><i class="fab fa-facebook-messenger text-xl"></i> Chat</button>
                 </div>
             </div>
 
-            <div class="hero-text">
-                <h1>Найдвартай <br> <span>Midman Үйлчилгээ</span></h1>
-                <p>Монголын томоохон группүүдийн Админ, Модератор.<br> Таны цаг зав, мөнгийг эрсдэлээс хамгаална.</p>
-                <a href="#market" class="btn-main">Бэлэн Аккоунтууд</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="proof" class="container">
-        <h2 class="section-title"><span>Миний Удирддаг Группүүд</span></h2>
-        <div class="proof-grid">
-            <a href="https://facebook.com/profile.php?id=61561712856021" target="_blank" class="proof-link admin">
-                <i class="fas fa-crown"></i><span class="proof-text">Game Market MN — PAGE ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/186310009926522" target="_blank" class="proof-link admin">
-                <i class="fas fa-shield-alt"></i><span class="proof-text">PUBG Аккоунт худалдаа 🇲🇳 — 34K ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/905083090111442" target="_blank" class="proof-link admin">
-                <i class="fas fa-shield-alt"></i><span class="proof-text">PUBG MOBILE & Mid 🇲🇳 — 11K ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/199627921906512" target="_blank" class="proof-link admin">
-                <i class="fas fa-shield-alt"></i><span class="proof-text">Standoff 2 Mongolia 🇲🇳 — 30K ADMIN</span>
-            </a>
-            <a href="https://facebook.com/groups/2998606320453023" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Mobile legends: mongolia✅ — 140K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/1253738194719122" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">PUBG Mobile: Mongolia 🇲🇳 — 85K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/806727429744887" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Standoff 2: Mongolia🇲🇳 — 48K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/5321202191332717" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">STALWART ESPORTS — 44K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/1851470735099237" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">PUBG MOBILE 🇲🇳 ХУДАЛДАА — 31K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/146728474305150" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Pubg Mobile Mongolia 🇲🇳 — 30K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/980953797128182" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">MLBB-Mongolia acc awn zarn — 16K MOD</span>
-            </a>
-            <a href="https://facebook.com/groups/793255685887110" target="_blank" class="proof-link mod">
-                <i class="fas fa-user-check"></i><span class="proof-text">Acc turees | PUBG ,ML | — 4K MOD</span>
-            </a>
-        </div>
-    </section>
-
-    <section id="services" class="container">
-        <h2 class="section-title"><span>Үнэ Тариф</span></h2>
-        <div class="table-container">
-            <h3 style="text-align: center; color: var(--blue); margin-bottom: 15px; padding-top:10px; font-size: 1.2rem;">Midman & Бусад</h3>
-            <table>
-                <tr><th>Үйлчилгээ</th><th>Үнэ / Тариф</th></tr>
-                <tr><td>Midman: 0 - 1,000,000₮</td><td>5,000₮</td></tr>
-                <tr><td>Midman: 1,000,000₮ - Дээш</td><td>1%</td></tr>
-                <tr><td style="color:var(--text-white); border-top:1px solid rgba(255,255,255,0.1)">Аккаунт зарж өгөх</td><td style="color:var(--blue); border-top:1px solid rgba(255,255,255,0.1)">Аккаунтын 5%</td></tr>
-                <tr><td>Аккаунт үнэлгээ, Bind асуулт</td><td class="free-text">ҮНЭГҮЙ</td></tr>
-            </table>
-        </div>
-    </section>
-
-    <section id="market" class="container">
-        <h2 class="section-title"><span>Зарах Аккоунтууд</span></h2>
-        <div class="market-grid">
-            
-            <div class="account-card">
-                <div class="acc-img-container">
-                    <img src="https://i.ibb.co/bR2r2nr8/IMG-1143.png" alt="PUBG Account">
+            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 ml-1">Үйлчилгээнүүд</h3>
+            <div class="grid grid-cols-4 gap-3 mb-12">
+                <div onclick="openServiceInfo('shop')" class="glass-panel rounded-2xl p-2 flex flex-col items-center justify-center h-[90px] gap-2 hover-lift glow-blue cursor-pointer group">
+                    <i class="fas fa-shopping-bag text-blue-400 text-2xl group-hover:drop-shadow-[0_0_10px_rgba(96,165,250,0.8)] transition"></i><span class="text-[10px] font-bold text-gray-300 group-hover:text-white">Дэлгүүр</span>
                 </div>
-                <div class="acc-info">
-                    <div class="acc-title">PUBG - KOREA VERSION</div>
-                    <p class="acc-details">Collection Lv76, 75 Level, Rare Skins</p>
-                    <p class="acc-details">Bind: X, Google</p>
-                    <span class="price-tag">2,500,000₮</span>
-                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">
-                        <i class="fab fa-facebook-messenger"></i> Авах (Chat)
-                    </a>
+                <div onclick="openServiceInfo('rent')" class="glass-panel rounded-2xl p-2 flex flex-col items-center justify-center h-[90px] gap-2 hover-lift glow-purple cursor-pointer group">
+                    <i class="fas fa-clock text-purple-400 text-2xl group-hover:drop-shadow-[0_0_10px_rgba(192,132,252,0.8)] transition"></i><span class="text-[10px] font-bold text-gray-300 group-hover:text-white">Түрээс</span>
+                </div>
+                <div onclick="openServiceInfo('topup')" class="glass-panel rounded-2xl p-2 flex flex-col items-center justify-center h-[90px] gap-2 hover-lift glow-yellow cursor-pointer group">
+                    <i class="fas fa-bolt text-yellow-400 text-2xl group-hover:drop-shadow-[0_0_10px_rgba(250,204,21,0.8)] transition"></i><span class="text-[10px] font-bold text-gray-300 group-hover:text-white">Цэнэглэх</span>
+                </div>
+                <div onclick="openServiceInfo('midman')" class="glass-panel rounded-2xl p-2 flex flex-col items-center justify-center h-[90px] gap-2 hover-lift glow-green cursor-pointer group">
+                    <i class="fas fa-shield-alt text-green-400 text-2xl group-hover:drop-shadow-[0_0_10px_rgba(74,222,128,0.8)] transition"></i><span class="text-[10px] font-bold text-gray-300 group-hover:text-white">Midman</span>
                 </div>
             </div>
 
-            <div class="account-card">
-                <div class="acc-img-container">
-                    <img src="https://i.ibb.co/JW0Kbwpw/595865809-2060174601385459-6335660528261022994-n.jpg" alt="PUBG Account">
-                </div>
-                <div class="acc-info">
-                    <div class="acc-title">PUBG - GLOBAL VERSION</div>
-                    <p class="acc-details">Collection Lv65, 85 Level, Bape Skins</p>
-                    <p class="acc-details">Bind: Elink</p>
-                    <span class="price-tag">2,000,000₮</span>
-                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">
-                        <i class="fab fa-facebook-messenger"></i> Авах (Chat)
-                    </a>
+            <div class="mb-24">
+                <div class="flex items-center justify-between mb-4 ml-1"><h3 class="text-xs font-bold text-gray-500 uppercase tracking-widest">Админууд</h3></div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div onclick="openLink(LINKS.admin1)" class="glass-panel p-3 rounded-2xl hover-lift glow-border flex flex-col items-center text-center cursor-pointer group"><img src="https://i.ibb.co/fVzH9LPS/595116297-814375481574499-6887627840659721607-n.jpg" class="w-12 h-12 rounded-full mb-3 border-2 border-white/5 shadow-md group-hover:border-blue-500 transition"><h4 class="font-bold text-xs text-white">Тулгаа</h4><p class="text-[9px] text-gray-500 font-medium bg-white/5 px-2 py-0.5 rounded mt-1">Sales</p></div>
+                    <div onclick="openLink(LINKS.admin2)" class="glass-panel p-3 rounded-2xl hover-lift glow-border flex flex-col items-center text-center cursor-pointer group"><img src="https://ui-avatars.com/api/?name=A2&background=7c3aed&color=fff" class="w-12 h-12 rounded-full mb-3 border-2 border-white/5 shadow-md group-hover:border-purple-500 transition"><h4 class="font-bold text-xs text-white">Болд</h4><p class="text-[9px] text-gray-500 font-medium bg-white/5 px-2 py-0.5 rounded mt-1">Rent</p></div>
+                    <div onclick="openLink(LINKS.admin3)" class="glass-panel p-3 rounded-2xl hover-lift glow-border flex flex-col items-center text-center cursor-pointer group"><img src="https://ui-avatars.com/api/?name=A3&background=db2777&color=fff" class="w-12 h-12 rounded-full mb-3 border-2 border-white/5 shadow-md group-hover:border-pink-500 transition"><h4 class="font-bold text-xs text-white">Сараа</h4><p class="text-[9px] text-gray-500 font-medium bg-white/5 px-2 py-0.5 rounded mt-1">Support</p></div>
                 </div>
             </div>
+        </section>
 
-            <!-- <div class="account-card">
-                <div class="acc-img-container">
-                    <img src="https://i.ibb.co/XrtgzRD5/595685785-2058484391554480-387863129341016037-n.jpg" alt="MLBB Account">
-                </div>
-                <div class="acc-info">
-                    <div class="acc-title">PUBG - GLOBAL VERSION</div>
-                    <p class="acc-details">Collection Lv61, 84 Level, Bape Skins</p>
-                    <p class="acc-details">Bind: Elink, Number</p>
-                    <span class="price-tag">800,000₮</span>
-                    <a href="https://m.me/61561712856021" target="_blank" class="btn-buy">
-                        <i class="fab fa-facebook-messenger"></i> Авах (Chat)
-                    </a>
-                </div>
-            </div> -->
+        <section id="shop" class="tab-content hidden">
+            <h2 class="text-3xl font-display font-bold mb-6 text-white px-1 drop-shadow-lg">MARKETPLACE</h2>
+            <div id="shop-container" class="grid grid-cols-2 gap-3 pb-24"><div class="col-span-2 text-center py-10 text-gray-600 animate-pulse text-sm">Уншиж байна...</div></div>
+        </section>
 
-        </div>
-    </section>
+        <section id="rent" class="tab-content hidden">
+            <h2 class="text-3xl font-display font-bold mb-6 text-white px-1 drop-shadow-lg">RENTAL</h2>
+            <div id="rent-container" class="flex flex-col gap-6 pb-24"></div>
+        </section>
 
-    <footer>
-        <div class="container">
-            <div class="logo" style="margin-bottom: 15px;">GAME <span>MARKET</span></div>
-            <div class="footer-social">
-                <a href="https://www.facebook.com/gamemarket.mn" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://m.me/61561712856021" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
+        <section id="topup" class="tab-content hidden">
+            <div class="flex items-center justify-between mb-6 px-1">
+                <h2 class="text-3xl font-display font-bold text-white drop-shadow-lg">TOP UP</h2>
+                <div class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">Auto Instant</div>
             </div>
-            <p style="color: #555; margin-top:20px; font-size: 0.8rem;">&copy; 2025 Бүх эрх хуулиар хамгаалагдсан.</p>
-        </div>
-    </footer>
+            <div id="topup-container" class="grid grid-cols-2 gap-3 pb-24"></div>
+        </section>
 
+    </main>
+
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div class="bg-[#111]/80 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 flex items-center gap-10 shadow-2xl shadow-black/80 ring-1 ring-white/5">
+            <button onclick="switchTab('home')" id="nav-home" class="nav-item text-white hover-lift transition duration-300 transform"><i class="fas fa-home text-xl"></i></button>
+            <button onclick="switchTab('shop')" id="nav-shop" class="nav-item text-gray-600 hover-lift transition duration-300 transform"><i class="fas fa-store text-xl"></i></button>
+            <button onclick="switchTab('rent')" id="nav-rent" class="nav-item text-gray-600 hover-lift transition duration-300 transform"><i class="fas fa-gamepad text-xl"></i></button>
+            <button onclick="switchTab('topup')" id="nav-topup" class="nav-item text-gray-600 hover-lift transition duration-300 transform"><i class="fas fa-bolt text-xl"></i></button>
+        </div>
+    </nav>
+
+    <div id="service-modal" class="fixed inset-0 z-[70] hidden flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm transition-opacity" onclick="closeServiceInfo()"></div>
+        <div class="relative glass-panel border border-white/10 rounded-3xl p-6 max-w-sm w-full fade-in shadow-2xl">
+            <div id="s-icon" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white flex items-center justify-center text-3xl mb-5 mx-auto shadow-lg shadow-blue-500/30"><i class="fas fa-info-circle"></i></div>
+            <h3 id="s-title" class="text-xl font-bold text-white text-center mb-2 font-display tracking-wide">Title</h3>
+            <p id="s-desc" class="text-sm text-gray-400 text-center mb-8 leading-relaxed font-medium">Desc</p>
+            <button id="s-btn" class="w-full py-3.5 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-500 transition shadow-lg shadow-blue-600/20 hover-lift">Үргэлжлүүлэх</button>
+        </div>
+    </div>
+
+    <div id="modal" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm transition-opacity" onclick="closeModal()"></div>
+        <div class="absolute bottom-0 w-full h-[95vh] bg-[#09090b] rounded-t-[35px] modal-enter flex flex-col overflow-hidden border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.8)]">
+            <div class="w-full flex justify-center pt-4 pb-2 bg-[#09090b] z-20" onclick="closeModal()"><div class="w-14 h-1.5 bg-gray-800 rounded-full"></div></div>
+            <div class="flex-1 overflow-y-auto pb-24 no-scrollbar">
+                <button onclick="closeModal()" class="absolute top-5 right-5 z-30 w-9 h-9 bg-black/50 backdrop-blur rounded-full text-white flex items-center justify-center hover:bg-white/10 transition"><i class="fas fa-times"></i></button>
+                <div class="w-full bg-black flex items-center justify-center py-8 relative"><div class="absolute inset-0 bg-gradient-to-t from-[#09090b] to-transparent z-10"></div><img id="m-img" src="" class="w-full h-auto max-h-[450px] object-contain relative z-0"></div>
+                <div class="px-6 py-4">
+                    <div class="flex justify-between items-start mb-6"><div><span id="m-cat" class="text-[10px] font-bold text-blue-400 border border-blue-900 bg-blue-900/10 px-2 py-0.5 rounded mb-2 inline-block uppercase tracking-wider">Category</span><h2 id="m-title" class="text-3xl font-black text-white leading-tight">Title</h2></div><div id="m-price" class="text-3xl font-num font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">0₮</div></div>
+                    <div class="grid grid-cols-3 gap-3 mb-8"><div class="glass-panel p-3 rounded-2xl text-center"><div class="text-[10px] text-gray-500 uppercase font-bold mb-1">Level</div><div id="m-level" class="text-white font-bold text-lg font-display">0</div></div><div class="glass-panel p-3 rounded-2xl text-center"><div class="text-[10px] text-gray-500 uppercase font-bold mb-1">Rank</div><div id="m-rank" class="text-blue-400 font-bold text-lg font-display">-</div></div><div class="glass-panel p-3 rounded-2xl text-center"><div class="text-[10px] text-gray-500 uppercase font-bold mb-1">Bind</div><div id="m-link" class="text-white font-bold text-lg font-display">-</div></div></div>
+                    <div class="mb-8"><h3 class="text-sm font-bold text-white mb-3 tracking-wider">HIGHLIGHTS</h3><ul id="m-desc-list" class="space-y-3"></ul></div>
+                </div>
+            </div>
+            <div class="absolute bottom-0 w-full p-6 bg-[#09090b]/90 backdrop-blur border-t border-white/5 z-20">
+                <button onclick="buyProduct()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-lg hover-lift shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2"><span>Худалдаж авах</span> <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIG ---
+        const LINKS = {
+            pageChat: 'https://m.me/YOUR_PAGE_ID',
+            fbPage: 'https://facebook.com/YOUR_PAGE',
+            admin1: 'https://facebook.com/admin1',
+            admin2: 'https://facebook.com/admin2',
+            admin3: 'https://facebook.com/admin3',
+            api: 'https://script.google.com/macros/s/AKfycbyQWmsUrlTXxG-9d_I-VRgvNbQvgmaL3ukHFJmK51lEVABHTTAPyLF9Tx0_0fwFvuuZrw/exec'
+        };
+
+        const services = {
+            shop: { title: "Аккоунт Худалдаа", desc: "Та хүссэн аккоунтоо сонгоод 'Худалдаж авах' товчийг дарахад манай Page Chat руу холбогдоно.", icon: "fa-shopping-bag", color: "from-blue-500 to-cyan-400", shadow: "shadow-blue-500/30", btn: "Дэлгүүр үзэх", action: "switchTab('shop')" },
+            rent: { title: "Аккоунт Түрээс", desc: "Цагаар болон 24 цагаар тоглох боломжтой. Түрээслэх товчийг дараад чат руу бичээрэй.", icon: "fa-clock", color: "from-purple-500 to-pink-500", shadow: "shadow-purple-500/30", btn: "Түрээслэх", action: "switchTab('rent')" },
+            topup: { title: "Тоглоомын Цэнэглэлт", desc: "PUBG Mobile UC, MLBB Diamond зэргийг ID-гаар хурдан шуурхай цэнэглэнэ.", icon: "fa-bolt", color: "from-yellow-400 to-orange-500", shadow: "shadow-orange-500/30", btn: "Ханш харах", action: "switchTab('topup')" },
+            midman: { title: "Midman Үйлчилгээ", desc: "Та хэн нэгэнтэй наймаа хийх гэж байгаа бол бид дундын батлан даагч хийж өгнө.", icon: "fa-shield-alt", color: "from-emerald-400 to-green-600", shadow: "shadow-green-500/30", btn: "Холбогдох", action: "openLink(LINKS.pageChat)" }
+        };
+
+        function openServiceInfo(type) {
+            const s = services[type];
+            document.getElementById('s-title').innerText = s.title;
+            document.getElementById('s-desc').innerText = s.desc;
+            document.getElementById('s-btn').innerText = s.btn;
+            document.getElementById('s-btn').setAttribute('onclick', `closeServiceInfo(); ${s.action}`);
+            const iconDiv = document.getElementById('s-icon');
+            iconDiv.className = `w-16 h-16 rounded-2xl bg-gradient-to-br ${s.color} text-white flex items-center justify-center text-3xl mb-5 mx-auto shadow-lg ${s.shadow}`;
+            iconDiv.innerHTML = `<i class="fas ${s.icon}"></i>`;
+            document.getElementById('service-modal').classList.remove('hidden');
+        }
+        function closeServiceInfo() { document.getElementById('service-modal').classList.add('hidden'); }
+
+        function formatMoney(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+        function switchTab(id) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(el => { el.classList.remove('text-white', 'scale-110', 'text-blue-400'); el.classList.add('text-gray-600'); });
+            const activeBtn = document.getElementById('nav-'+id);
+            activeBtn.classList.remove('text-gray-600'); activeBtn.classList.add('text-white', 'scale-110');
+            window.scrollTo(0,0);
+        }
+        function openLink(url) { window.open(url, '_blank'); }
+        function closeModal() { document.getElementById('modal').classList.add('hidden'); }
+        function buyProduct() { window.open(LINKS.pageChat, '_blank'); }
+
+        function openProduct(dataStr) {
+            const data = dataStr.split('|separator|');
+            const [name, cat, price, img, level, rank, link, highlights] = data;
+            document.getElementById('m-img').src = img; document.getElementById('m-title').innerText = name; document.getElementById('m-cat').innerText = cat;
+            let cleanPrice = price.toString().replace(/[^0-9]/g, ''); document.getElementById('m-price').innerText = formatMoney(cleanPrice) + '₮';
+            document.getElementById('m-level').innerText = level || '-'; document.getElementById('m-rank').innerText = rank || '-'; document.getElementById('m-link').innerText = link || '-';
+            const list = document.getElementById('m-desc-list'); list.innerHTML = '';
+            if(highlights) { highlights.split(',').forEach(item => { if(item.trim()) list.innerHTML += `<li class="flex items-start gap-3 text-sm text-gray-300 glass-panel p-3 rounded-xl border-none"><i class="fas fa-check-circle text-blue-500 mt-0.5 text-xs"></i><span>${item.trim()}</span></li>`; }); } 
+            else { list.innerHTML = '<li class="text-gray-500">No details</li>'; }
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        async function loadApp() {
+            try {
+                if(LINKS.api.includes('YOUR_')) { console.log("API Link missing"); return; }
+                const response = await fetch(LINKS.api);
+                const data = await response.json();
+
+                // SHOP
+                const shopList = data.shop || [];
+                const sContainer = document.getElementById('shop-container'); sContainer.innerHTML = '';
+                for(let i=1; i<shopList.length; i++) {
+                    const [n, c, p, img, lvl, rank, lnk, high] = shopList[i]; if(!n) continue;
+                    const fullData = `${n}|separator|${c}|separator|${p}|separator|${img}|separator|${lvl}|separator|${rank}|separator|${lnk}|separator|${high}`;
+                    let cleanPrice = p.toString().replace(/[^0-9]/g, '');
+                    sContainer.innerHTML += `
+                    <div class="glass-panel rounded-2xl overflow-hidden hover-lift cursor-pointer flex flex-col group glow-blue" onclick="openProduct('${fullData}')">
+                        <div class="aspect-[4/3] w-full bg-[#000] relative overflow-hidden"><img src="${img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"><div class="absolute top-2 left-2 bg-black/60 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-gray-300 uppercase border border-white/10">${c}</div></div>
+                        <div class="p-3 flex-1 flex flex-col justify-between">
+                            <h4 class="font-bold text-white text-sm line-clamp-2 leading-snug mb-2 group-hover:text-blue-400 transition">${n}</h4>
+                            <div class="flex items-center justify-between mt-auto pt-2 border-t border-white/5"><span class="text-xs text-gray-500 font-display">${rank || '-'}</span><span class="text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-num">${formatMoney(cleanPrice)}₮</span></div>
+                        </div>
+                    </div>`;
+                }
+
+                // RENT
+                const rentList = data.rent || [];
+                const rContainer = document.getElementById('rent-container'); rContainer.innerHTML = '';
+                for(let i=1; i<rentList.length; i++) {
+                    const [n,ph,pd,img,st] = rentList[i]; if(!n) continue;
+                    // Үнэ цэвэрлэх
+                    let cleanPh = ph.toString().replace(/[^0-9]/g, '');
+                    let cleanPd = pd.toString().replace(/[^0-9]/g, '');
+                    
+                    rContainer.innerHTML += `
+                    <div class="glass-panel rounded-3xl overflow-hidden shadow-2xl group hover-lift glow-purple">
+                        <div class="aspect-video w-full bg-black relative"><img src="${img}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700"><div class="absolute inset-0 bg-gradient-to-t from-[#151518] via-transparent to-transparent"></div><div class="absolute bottom-5 left-5 right-5"><h3 class="text-2xl font-black text-white leading-none drop-shadow-lg">${n}</h3></div></div>
+                        <div class="p-5">
+                            <div class="flex gap-3 mb-5">
+                                <div class="flex-1 bg-white/5 border border-white/5 rounded-2xl p-2 text-center backdrop-blur-sm"><div class="text-[10px] text-gray-400 uppercase font-bold">1 Цаг</div><div class="text-xl font-num font-bold text-white">${formatMoney(cleanPh)}₮</div></div>
+                                <div class="flex-1 bg-purple-500/10 border border-purple-500/20 rounded-2xl p-2 text-center backdrop-blur-sm"><div class="text-[10px] text-purple-300 uppercase font-bold">24 Цаг</div><div class="text-xl font-num font-bold text-purple-400">${formatMoney(cleanPd)}₮</div></div>
+                            </div>
+                            <button onclick="openLink(LINKS.pageChat)" class="w-full bg-white text-black py-3.5 rounded-xl font-bold text-sm hover:scale-[1.02] transition shadow-lg">Түрээслэх</button>
+                        </div>
+                    </div>`;
+                }
+
+                // TOPUP
+                const topList = data.topup || [];
+                const tContainer = document.getElementById('topup-container'); tContainer.innerHTML = '';
+                for(let i=1; i<topList.length; i++) {
+                    const [g,a,p] = topList[i]; if(!g) continue;
+                    let cleanP = p.toString().replace(/[^0-9]/g, '');
+                    
+                    let bgImage = "https://i.ibb.co/RkKt172H/uc.png"; let currency = "UC"; let borderClass = "border-white/10";
+                    if(g.toLowerCase().includes('pubg')) { bgImage = "https://i.ibb.co/h7N5y5L/uc-icon-new.png"; currency = "UC"; borderClass = "border-yellow-500/30"; } 
+                    else if(g.toLowerCase().includes('mobile') || g.toLowerCase().includes('legend')) { bgImage = "https://i.ibb.co/0t1Xg4Q/mlbb-diamond.png"; currency = "DM"; borderClass = "border-blue-500/30"; }
+
+                    tContainer.innerHTML += `
+                    <div class="glass-panel shimmer rounded-2xl p-4 flex flex-col justify-between h-32 hover-lift cursor-pointer group relative overflow-hidden ${borderClass}" onclick="openLink(LINKS.pageChat)">
+                        <div class="z-10 flex flex-col justify-between h-full">
+                            <div><h3 class="text-2xl font-black text-white font-num uppercase italic tracking-wide leading-none mb-0.5 drop-shadow-md">${a} <span class="text-xs not-italic text-gray-400 font-bold ml-1">${currency}</span></h3></div>
+                            <div class="bg-black/50 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 self-start"><p class="text-red-400 font-bold font-num text-lg">${formatMoney(cleanP)}₮</p></div>
+                        </div>
+                        <img src="${bgImage}" class="absolute -right-5 -bottom-5 w-32 h-32 object-contain opacity-80 rotate-[-12deg] group-hover:scale-110 group-hover:rotate-0 transition duration-500 drop-shadow-2xl grayscale-[0.2] group-hover:grayscale-0">
+                    </div>`;
+                }
+
+            } catch(e) { console.error(e); }
+        }
+        loadApp();
+    </script>
 </body>
 </html>
