@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>S I I L E N</title>
+    
+    <title>S I I L E N | e</title>
+    <meta name="description" content="PUBG, MLBB аккоунт худалдаа, түрээс, найдвартай midman үйлчилгээ.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="S I I L E N | Game Store">
+    <meta property="og:description" content="PUBG, MLBB аккоунт худалдаа, түрээс, найдвартай midman үйлчилгээ.">
+    <meta property="og:image" content="https://i.ibb.co/fVzH9LPS/595116297-814375481574499-6887627840659721607-n.jpg">
+
+    <link rel="icon" type="image/png" href="https://i.ibb.co/fVzH9LPS/595116297-814375481574499-6887627840659721607-n.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Teko:wght@500;600;700&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet">
@@ -112,11 +122,11 @@
         </section>
 
         <section id="topup" class="tab-content hidden">
-            <div class="flex items-center justify-between mb-6 px-1">
+            <div class="flex items-center justify-between mb-4 px-1">
                 <h2 class="text-3xl font-display font-bold text-white drop-shadow-lg">TOP UP</h2>
                 <div class="text-[10px] bg-white/5 px-2 py-1 rounded text-gray-400 border border-white/5">Auto Instant</div>
             </div>
-            <div id="topup-container" class="grid grid-cols-2 gap-3 pb-24"></div>
+            <div id="topup-container" class="grid grid-cols-2 gap-2.5 pb-24"></div>
         </section>
 
     </main>
@@ -146,7 +156,7 @@
             <div class="w-full flex justify-center pt-4 pb-2 bg-[#09090b] z-20" onclick="closeModal()"><div class="w-14 h-1.5 bg-gray-800 rounded-full"></div></div>
             <div class="flex-1 overflow-y-auto pb-24 no-scrollbar">
                 <button onclick="closeModal()" class="absolute top-5 right-5 z-30 w-9 h-9 bg-black/50 backdrop-blur rounded-full text-white flex items-center justify-center hover:bg-white/10 transition"><i class="fas fa-times"></i></button>
-                <div class="w-full bg-black flex items-center justify-center py-8 relative"><div class="absolute inset-0 bg-gradient-to-t from-[#09090b] to-transparent z-10"></div><img id="m-img" src="" class="w-full h-auto max-h-[450px] object-contain relative z-0"></div>
+                <div class="w-full bg-black flex items-center justify-center py-8 relative"><div class="absolute inset-0 bg-gradient-to-t from-[#09090b] to-transparent z-10"></div><img id="m-img" src="" class="w-full h-auto max-h-[450px] object-contain relative z-0" onerror="this.onerror=null; this.src='https://i.ibb.co/fVzH9LPS/595116297-814375481574499-6887627840659721607-n.jpg';"></div>
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-start mb-6"><div><span id="m-cat" class="text-[10px] font-bold text-blue-400 border border-blue-900 bg-blue-900/10 px-2 py-0.5 rounded mb-2 inline-block uppercase tracking-wider">Category</span><h2 id="m-title" class="text-3xl font-black text-white leading-tight">Title</h2></div><div id="m-price" class="text-3xl font-num font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">0₮</div></div>
                     <div class="grid grid-cols-3 gap-3 mb-8"><div class="glass-panel p-3 rounded-2xl text-center"><div class="text-[10px] text-gray-500 uppercase font-bold mb-1">Level</div><div id="m-level" class="text-white font-bold text-lg font-display">0</div></div><div class="glass-panel p-3 rounded-2xl text-center"><div class="text-[10px] text-gray-500 uppercase font-bold mb-1">Rank</div><div id="m-rank" class="text-blue-400 font-bold text-lg font-display">-</div></div><div class="glass-panel p-3 rounded-2xl text-center"><div class="text-[10px] text-gray-500 uppercase font-bold mb-1">Bind</div><div id="m-link" class="text-white font-bold text-lg font-display">-</div></div></div>
@@ -169,6 +179,8 @@
             admin3: 'https://facebook.com/jargalsaikhan.official',
             api: 'https://script.google.com/macros/s/AKfycbyQWmsUrlTXxG-9d_I-VRgvNbQvgmaL3ukHFJmK51lEVABHTTAPyLF9Tx0_0fwFvuuZrw/exec'
         };
+
+        const FALLBACK_IMAGE = 'https://i.ibb.co/fVzH9LPS/595116297-814375481574499-6887627840659721607-n.jpg';
 
         const services = {
             shop: { title: "Аккоунт Худалдаа", desc: "Та хүссэн аккоунтоо сонгоод 'Худалдаж авах' товчийг дарахад манай Page Chat руу холбогдон төлбөрөө төлөн аккаа аваарай.", icon: "fa-shopping-bag", color: "from-blue-500 to-cyan-400", shadow: "shadow-blue-500/30", btn: "Дэлгүүр үзэх", action: "switchTab('shop')" },
@@ -230,7 +242,7 @@
                     let cleanPrice = p.toString().replace(/[^0-9]/g, '');
                     sContainer.innerHTML += `
                     <div class="glass-panel rounded-2xl overflow-hidden hover-lift cursor-pointer flex flex-col group glow-blue" onclick="openProduct('${fullData}')">
-                        <div class="aspect-[4/3] w-full bg-[#000] relative overflow-hidden"><img src="${img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700"><div class="absolute top-2 left-2 bg-black/60 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-gray-300 uppercase border border-white/10">${c}</div></div>
+                        <div class="aspect-[4/3] w-full bg-[#000] relative overflow-hidden"><img src="${img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" onerror="this.onerror=null; this.src='${FALLBACK_IMAGE}';"><div class="absolute top-2 left-2 bg-black/60 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold text-gray-300 uppercase border border-white/10">${c}</div></div>
                         <div class="p-3 flex-1 flex flex-col justify-between">
                             <h4 class="font-bold text-white text-sm line-clamp-2 leading-snug mb-2 group-hover:text-blue-400 transition">${n}</h4>
                             <div class="flex items-center justify-between mt-auto pt-2 border-t border-white/5"><span class="text-xs text-gray-500 font-display">${rank || '-'}</span><span class="text-base font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-num">${formatMoney(cleanPrice)}₮</span></div>
@@ -243,13 +255,11 @@
                 const rContainer = document.getElementById('rent-container'); rContainer.innerHTML = '';
                 for(let i=1; i<rentList.length; i++) {
                     const [n,ph,pd,img,st] = rentList[i]; if(!n) continue;
-                    // Үнэ цэвэрлэх
                     let cleanPh = ph.toString().replace(/[^0-9]/g, '');
                     let cleanPd = pd.toString().replace(/[^0-9]/g, '');
-                    
                     rContainer.innerHTML += `
                     <div class="glass-panel rounded-3xl overflow-hidden shadow-2xl group hover-lift glow-purple">
-                        <div class="aspect-video w-full bg-black relative"><img src="${img}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700"><div class="absolute inset-0 bg-gradient-to-t from-[#151518] via-transparent to-transparent"></div><div class="absolute bottom-5 left-5 right-5"><h3 class="text-2xl font-black text-white leading-none drop-shadow-lg">${n}</h3></div></div>
+                        <div class="aspect-video w-full bg-black relative"><img src="${img}" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-700" onerror="this.onerror=null; this.src='${FALLBACK_IMAGE}';"><div class="absolute inset-0 bg-gradient-to-t from-[#151518] via-transparent to-transparent"></div><div class="absolute bottom-5 left-5 right-5"><h3 class="text-2xl font-black text-white leading-none drop-shadow-lg">${n}</h3></div></div>
                         <div class="p-5">
                             <div class="flex gap-3 mb-5">
                                 <div class="flex-1 bg-white/5 border border-white/5 rounded-2xl p-2 text-center backdrop-blur-sm"><div class="text-[10px] text-gray-400 uppercase font-bold">1 Цаг</div><div class="text-xl font-num font-bold text-white">${formatMoney(cleanPh)}₮</div></div>
@@ -260,24 +270,24 @@
                     </div>`;
                 }
 
-                // TOPUP
+                // TOPUP (COMPACT SIZE REDUCTION)
                 const topList = data.topup || [];
                 const tContainer = document.getElementById('topup-container'); tContainer.innerHTML = '';
                 for(let i=1; i<topList.length; i++) {
                     const [g,a,p] = topList[i]; if(!g) continue;
                     let cleanP = p.toString().replace(/[^0-9]/g, '');
-                    
-                    let bgImage = "https://i.ibb.co/RkKt172H/uc.png"; let currency = "UC"; let borderClass = "border-white/10";
-                    if(g.toLowerCase().includes('pubg')) { bgImage = "https://i.ibb.co/h7N5y5L/uc-icon-new.png"; currency = "UC"; borderClass = "border-yellow-500/30"; } 
-                    else if(g.toLowerCase().includes('mobile') || g.toLowerCase().includes('legend')) { bgImage = "https://i.ibb.co/0t1Xg4Q/mlbb-diamond.png"; currency = "DM"; borderClass = "border-blue-500/30"; }
+                    let bgImage = "https://via.placeholder.com/150"; let currency = ""; let borderClass = "border-white/10";
+                    if(g.toLowerCase().includes('pubg')) { bgImage = "https://i.ibb.co/RkKt172H/uc.png"; currency = "UC"; borderClass = "border-yellow-500/30"; } 
+                    else if(g.toLowerCase().includes('mobile') || g.toLowerCase().includes('legend')) { bgImage = "https://i.ibb.co/RkKt172H/uc.png"; currency = "DM"; borderClass = "border-blue-500/30"; }
 
+                    // CHANGED: Reduced height from h-32 to h-20, padding from p-4 to p-2.5, smaller image
                     tContainer.innerHTML += `
-                    <div class="glass-panel shimmer rounded-2xl p-4 flex flex-col justify-between h-32 hover-lift cursor-pointer group relative overflow-hidden ${borderClass}" onclick="openLink(LINKS.pageChat)">
+                    <div class="glass-panel shimmer rounded-xl p-2.5 flex flex-col justify-between h-20 hover-lift cursor-pointer group relative overflow-hidden ${borderClass}" onclick="openLink(LINKS.pageChat)">
                         <div class="z-10 flex flex-col justify-between h-full">
-                            <div><h3 class="text-2xl font-black text-white font-num uppercase italic tracking-wide leading-none mb-0.5 drop-shadow-md">${a} <span class="text-xs not-italic text-gray-400 font-bold ml-1">${currency}</span></h3></div>
-                            <div class="bg-black/50 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 self-start"><p class="text-red-400 font-bold font-num text-lg">${formatMoney(cleanP)}₮</p></div>
+                            <div><h3 class="text-xl font-black text-white font-num uppercase italic tracking-wide leading-none mb-0.5 drop-shadow-md">${a} <span class="text-[10px] not-italic text-gray-400 font-bold ml-0.5">${currency}</span></h3></div>
+                            <div class="bg-black/50 backdrop-blur-md px-2 py-0.5 rounded border border-white/10 self-start"><p class="text-red-400 font-bold font-num text-sm">${formatMoney(cleanP)}₮</p></div>
                         </div>
-                        <img src="${bgImage}" class="absolute -right-5 -bottom-5 w-32 h-32 object-contain opacity-80 rotate-[-12deg] group-hover:scale-110 group-hover:rotate-0 transition duration-500 drop-shadow-2xl grayscale-[0.2] group-hover:grayscale-0">
+                        <img src="${bgImage}" class="absolute -right-3 -bottom-3 w-20 h-20 object-contain opacity-80 rotate-[-12deg] group-hover:scale-110 group-hover:rotate-0 transition duration-500 drop-shadow-xl grayscale-[0.2] group-hover:grayscale-0" onerror="this.onerror=null; this.src='${FALLBACK_IMAGE}';">
                     </div>`;
                 }
 
@@ -287,6 +297,3 @@
     </script>
 </body>
 </html>
-
-
-
