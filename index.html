@@ -29,7 +29,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Inter', sans-serif; /* Updated Font */
+            font-family: 'Inter', sans-serif;
             background-color: #0f172a;
             color: var(--text-main);
             line-height: 1.6;
@@ -185,7 +185,9 @@
         }
 
         /* PROOF GRID (Glass Cards) */
-        .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        /* Updated Grid for better mobile fit: min-width reduced to 280px */
+        .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        
         .proof-link { 
             display: flex; align-items: center; gap: 20px;
             background: var(--glass-bg); padding: 20px; 
@@ -209,10 +211,9 @@
             background: rgba(255,255,255,0.05); color: #fff;
             display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
             flex-shrink: 0;
-            overflow: hidden; /* Added for image containment */
+            overflow: hidden; 
         }
         
-        /* New Style for Image inside Proof Icon */
         .proof-icon img {
             width: 100%;
             height: 100%;
@@ -221,12 +222,7 @@
 
         .admin-icon { color: #fbbf24; background: rgba(251, 191, 36, 0.1); }
         .mod-icon { color: #60a5fa; background: rgba(96, 165, 250, 0.1); }
-        
-        /* Custom class for image icons to remove padding/background if needed */
-        .img-icon {
-            padding: 0;
-            background: transparent;
-        }
+        .img-icon { padding: 0; background: transparent; }
 
         .proof-text { font-size: 0.95rem; font-weight: 600; color: #e2e8f0; }
         .proof-sub { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; margin-top: 3px; }
@@ -236,8 +232,10 @@
             background: var(--glass-bg); border: 1px solid var(--glass-border); 
             border-radius: 24px; max-width: 900px; margin: 0 auto; overflow: hidden;
             backdrop-filter: blur(10px);
+            /* Important for Mobile: Allows Horizontal Scroll */
+            overflow-x: auto;
         }
-        table { width: 100%; border-collapse: collapse; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; /* Forces scroll on small screens */ }
         th, td { padding: 25px; text-align: left; }
         th { 
             color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; 
@@ -252,7 +250,8 @@
         }
 
         /* MARKET GRID */
-        .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+        /* Updated Grid for better mobile fit */
+        .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
         
         .account-card { 
             background: var(--glass-bg); border: 1px solid var(--glass-border);
@@ -269,7 +268,6 @@
         .acc-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .account-card:hover img { transform: scale(1.1); }
 
-        /* Glass Tag on Image */
         .acc-tag { 
             position: absolute; top: 15px; left: 15px; 
             background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); 
@@ -281,10 +279,10 @@
         .acc-info { padding: 25px; display: flex; flex-direction: column; flex: 1; }
         .acc-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 15px; }
         
-        /* NEW: Account Specs Grid */
+        /* Account Specs Grid */
         .acc-specs {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns */
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
             margin-bottom: 20px;
         }
@@ -302,14 +300,8 @@
             transition: 0.3s;
         }
         
-        .spec-item:hover {
-            background: rgba(255,255,255,0.08);
-        }
-        
-        .spec-item i {
-            color: var(--color-2);
-            font-size: 0.9rem;
-        }
+        .spec-item:hover { background: rgba(255,255,255,0.08); }
+        .spec-item i { color: var(--color-2); font-size: 0.9rem; }
 
         .price-row { 
             display: flex; justify-content: space-between; align-items: center; 
@@ -342,15 +334,19 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* MOBILE RESPONSIVE */
+        /* MOBILE RESPONSIVE TWEAKS */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; gap: 50px; }
-            .hero-card { width: 100%; max-width: 360px; }
-            .hero-text h1 { font-size: 3rem; }
+            section { padding: 60px 0; }
+            .hero { flex-direction: column; text-align: center; gap: 40px; }
+            .hero-card { width: 100%; max-width: 100%; } /* Full width card on mobile */
+            .hero-text h1 { font-size: 2.5rem; } /* Smaller font for mobile */
             .nav-links { display: none; }
-            .proof-grid { grid-template-columns: 1fr; }
+            .proof-grid { grid-template-columns: 1fr; } /* Single column */
+            .market-grid { grid-template-columns: 1fr; } /* Single column */
             .hero-btns { justify-content: center; }
-            .acc-specs { grid-template-columns: 1fr; } /* Stack details on very small screens */
+            .acc-specs { grid-template-columns: 1fr; } /* Stack details */
+            .logo { font-size: 1.2rem; }
+            .container { padding: 0 15px; }
         }
     </style>
 </head>
@@ -404,7 +400,7 @@
         </div>
         <div class="proof-grid">
             
-            <!-- Page 1: Image Icon (Using Placeholder) -->
+            <!-- Page 1: Image Icon -->
             <a href="https://facebook.com/profile.php?id=61561712856021" target="_blank" class="proof-link">
                 <div class="proof-icon img-icon">
                     <img src="https://i.ibb.co/chSfJZh6/Gemini-Generated-Image-6idkra6idkra6idk.png" alt="GM">
@@ -412,7 +408,7 @@
                 <div><div class="proof-text">Game Market MN</div><span class="proof-sub">PAGE ADMIN</span></div>
             </a>
 
-            <!-- Page 2: Image Icon (Using Placeholder) -->
+            <!-- Page 2: Image Icon -->
             <a href="https://www.facebook.com/siilenofficial" target="_blank" class="proof-link">
                 <div class="proof-icon img-icon">
                     <img src="https://i.ibb.co/fVzH9LPS/595116297-814375481574499-6887627840659721607-n.jpg" alt="S">
@@ -494,7 +490,6 @@
                 <div class="acc-info">
                     <div class="acc-title">PUBG - KOREA</div>
                     
-                    <!-- NEW: Structured Information Layout -->
                     <div class="acc-specs">
                         <div class="spec-item" title="Collection Level">
                             <i class="fas fa-layer-group"></i> Coll. Lv76
@@ -526,7 +521,6 @@
                 <div class="acc-info">
                     <div class="acc-title">PUBG - GLOBAL</div>
                     
-                    <!-- NEW: Structured Information Layout -->
                     <div class="acc-specs">
                         <div class="spec-item">
                             <i class="fas fa-layer-group"></i> Coll. Lv65
@@ -538,7 +532,7 @@
                             <i class="fas fa-tshirt"></i> Bape Skins
                         </div>
                         <div class="spec-item">
-                            <i class="fas fa-link"></i> Elink
+                            <i class="fab fa-link"></i> Elink
                         </div>
                     </div>
 
@@ -548,29 +542,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Example Template for Future Accounts -->
-            <!-- 
-            <div class="account-card">
-                <div class="acc-img-container">
-                    <div class="acc-tag">MLBB</div>
-                    <img src="URL_HERE" alt="MLBB">
-                </div>
-                <div class="acc-info">
-                    <div class="acc-title">MLBB - GLOBAL</div>
-                    <div class="acc-specs">
-                        <div class="spec-item"><i class="fas fa-level-up-alt"></i> Level 61</div>
-                        <div class="spec-item"><i class="fas fa-mask"></i> 84 Skins</div>
-                        <div class="spec-item"><i class="fas fa-mobile-alt"></i> Number</div>
-                        <div class="spec-item"><i class="fas fa-link"></i> Elink</div>
-                    </div>
-                    <div class="price-row">
-                        <span class="price-tag">800,000₮</span>
-                        <a href="#" class="btn-buy">АВАХ</a>
-                    </div>
-                </div>
-            </div> 
-            -->
 
         </div>
     </section>
