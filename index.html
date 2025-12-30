@@ -185,7 +185,6 @@
         }
 
         /* PROOF GRID (Glass Cards) */
-        /* Updated Grid for better mobile fit: min-width reduced to 280px */
         .proof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         
         .proof-link { 
@@ -232,10 +231,10 @@
             background: var(--glass-bg); border: 1px solid var(--glass-border); 
             border-radius: 24px; max-width: 900px; margin: 0 auto; overflow: hidden;
             backdrop-filter: blur(10px);
-            /* Important for Mobile: Allows Horizontal Scroll */
+            /* Desktop default */
             overflow-x: auto;
         }
-        table { width: 100%; border-collapse: collapse; min-width: 500px; /* Forces scroll on small screens */ }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
         th, td { padding: 25px; text-align: left; }
         th { 
             color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; 
@@ -250,7 +249,6 @@
         }
 
         /* MARKET GRID */
-        /* Updated Grid for better mobile fit */
         .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
         
         .account-card { 
@@ -347,6 +345,23 @@
             .acc-specs { grid-template-columns: 1fr; } /* Stack details */
             .logo { font-size: 1.2rem; }
             .container { padding: 0 15px; }
+
+            /* TABLE MOBILE OPTIMIZATION */
+            .table-container {
+                overflow-x: hidden; /* Remove scroll */
+            }
+            table {
+                min-width: auto; /* Remove minimum width constraint */
+                width: 100%;
+                table-layout: fixed; /* Fix layout to prevent overflow */
+            }
+            th, td {
+                padding: 12px 5px; /* Reduce padding significantly */
+                font-size: 0.75rem; /* Smaller font for content */
+                word-wrap: break-word; /* Allow words to break if too long */
+            }
+            th { letter-spacing: 0.5px; } /* Reduce spacing */
+            .free-text { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -466,10 +481,10 @@
         <div class="table-container">
             <table>
                 <tr><th>ҮЙЛЧИЛГЭЭ</th><th>НӨХЦӨЛ</th><th>ҮНЭ</th></tr>
-                <tr><td>Midman </td><td>0 - 1,000,000₮</td><td>5,000₮</td></tr>
-                <tr><td>Midman </td><td>1,000,000₮ - Дээш</td><td>1%</td></tr>
-                <tr><td>Аккаунт заруулах</td><td>Зарж өгсөн дүнгийн</td><td>5%</td></tr>
-                <tr><td>Аккаунт үнэлгээ / Bind</td><td>Зөвлөгөө</td><td class="free-text">ҮНЭГҮЙ</td></tr>
+                <tr><td>Midman </td><td>0 - 1 сая₮</td><td>5,000₮</td></tr>
+                <tr><td>Midman </td><td>1 сая₮ +</td><td>1%</td></tr>
+                <tr><td>Аккаунт зарах</td><td>Борлуулалт</td><td>5%</td></tr>
+                <tr><td>Үнэлгээ</td><td>Зөвлөгөө</td><td class="free-text">ҮНЭГҮЙ</td></tr>
             </table>
         </div>
     </section>
@@ -501,7 +516,7 @@
                             <i class="fas fa-gem"></i> Rare Skins
                         </div>
                         <div class="spec-item" title="Binding">
-                            <i class="fab fa-google"></i> Google
+                            <i class="fas fa-link"></i> Google
                         </div>
                     </div>
 
@@ -532,7 +547,7 @@
                             <i class="fas fa-tshirt"></i> Bape Skins
                         </div>
                         <div class="spec-item">
-                            <i class="fab fa-link"></i> Elink
+                            <i class="fas fa-link"></i> Elink
                         </div>
                     </div>
 
